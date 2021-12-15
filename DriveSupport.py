@@ -42,8 +42,8 @@ class ConnectToDrive():
         return AXIS_STATE_FULL_CALIBRATION_SEQUENCE
 
     def CalibrateAxis(self, axis):
-        # axis.requested_state = self.DetermineAxisState(axis.motor.is_calibrated, axis.encoder.is_ready)
-        axis.requested_state = AXIS_STATE_FULL_CALIBRATION_SEQUENCE
+        axis.requested_state = self.DetermineAxisState(axis.motor.is_calibrated, axis.encoder.is_ready)
+        # axis.requested_state = AXIS_STATE_FULL_CALIBRATION_SEQUENCE
 
     ## Will calibrate motors based on their current state
     def begin(self, feedrate):
