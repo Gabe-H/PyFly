@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FLYPT_MOVER Version="3.5.3">
   <MAIN>
-    <Location>1136,363</Location>
+    <Location>1006,296</Location>
   </MAIN>
   <SHARE>
     <ShareUser></ShareUser>
@@ -244,7 +244,7 @@
   <OUTPUT>
     <Type>Mover.Outputs.UDP</Type>
     <Name>OUTPUT :: UDP</Name>
-    <Location>1163,429</Location>
+    <Location>1426,285</Location>
     <Size>870,421</Size>
     <Visible>False</Visible>
     <CONTROLS>
@@ -257,9 +257,9 @@
       <NUDIP3>255</NUDIP3>
       <NUDIP4>255</NUDIP4>
       <NUDInPort>12001</NUDInPort>
-      <TXTStopString>#</TXTStopString>
-      <TXTSendString>&lt;Axis1a&gt;&lt;Axis2a&gt;&lt;Axis3a&gt;&lt;Axis4a&gt;&lt;Axis5a&gt;&lt;Axis6a&gt;</TXTSendString>
-      <TXTStartString>$</TXTStartString>
+      <TXTStopString></TXTStopString>
+      <TXTSendString>A&lt;PAxis1a&gt;&amp;B&lt;PAxis2a&gt;&amp;C&lt;PAxis3a&gt;&amp;D&lt;PAxis4a&gt;&amp;E&lt;PAxis5a&gt;&amp;F&lt;PAxis6a&gt;</TXTSendString>
+      <TXTStartString></TXTStartString>
       <TXTUniqueName>8</TXTUniqueName>
       <TXTInputString></TXTInputString>
       <TXTName>OUTPUT :: UDP</TXTName>
@@ -268,14 +268,14 @@
       <CHKAutoConnect>False</CHKAutoConnect>
       <CHKReceive>False</CHKReceive>
       <CHKTopMost>False</CHKTopMost>
-      <DDLTypeOfOutput>Binary</DDLTypeOfOutput>
+      <DDLTypeOfOutput>Decimal</DDLTypeOfOutput>
       <TVInputSelection />
     </CONTROLS>
   </OUTPUT>
   <VIEWER_3D>
     <Type>Mover.Viewers.View3D</Type>
     <Name>3D VIEWER</Name>
-    <Location>754,171</Location>
+    <Location>917,108</Location>
     <Size>400,400</Size>
     <Visible>False</Visible>
     <CONTROLS>
@@ -293,7 +293,7 @@
     <item>7</item>
     <item>5</item>
     <item>3</item>
-    <item>8</item>
     <item>9</item>
+    <item>8</item>
   </Z_ORDER>
 </FLYPT_MOVER>
