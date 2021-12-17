@@ -10,6 +10,9 @@ class ConnectToDrive():
             self.drives.append(self.DetermineParameters(odrive.find_any(serial_number=serialNumbers[i])))
             print(f'({i + 1}/{len(serialNumbers)}) ODrives Connected...')
         
+        # for drive in self.drives:
+        #     drive.save_configuration()
+        
         print(f'\n{len(self.drives)} connected\n')
 
     def SetAxisParam(self, axis, pids):
@@ -62,6 +65,8 @@ class ConnectToDrive():
             if drivesNotCalibrated == 0:
                 break
             time.sleep(0.1)
+
+        time.sleep(1)
             
         for drive in self.drives:
             drive.axis0.requested_state = AXIS_STATE_CLOSED_LOOP_CONTROL

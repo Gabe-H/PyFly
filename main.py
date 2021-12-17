@@ -69,14 +69,15 @@ def loop():
     axes = parse(data)
 
     for i in range(6):
-      odrv_axes[i].controller.input_pos = axes[i]
+      if (axes[i] >=0) and (axes[i] <= TOTAL_LENGTH/BALL_SCREW_PITCH):
+        odrv_axes[i].controller.input_pos = axes[i]
     
     now = time.time()
+    time.sleep(0.01)
     print("Loop time: ", now-last_time)
     last_time = now
 
 if __name__ == "__main__":
-
   odrv0, odrv1, odrv2 = support.begin(1000/(INTERVAL_LOOPS*2))
   
   odrv_axes = [
@@ -88,7 +89,7 @@ if __name__ == "__main__":
     odrv2.axis1
   ]
   moveToMid(1000/(INTERVAL_LOOPS*2))
+
   print("Ready")
   while True:
     loop()
-    # time.sleep(INTERVAL_LOOPS * 0.002)
