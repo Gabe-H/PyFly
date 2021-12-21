@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FLYPT_MOVER Version="3.5.3">
   <MAIN>
-    <Location>8,67</Location>
+    <Location>1000,345</Location>
   </MAIN>
   <SHARE>
     <ShareUser></ShareUser>
@@ -92,22 +92,22 @@
     <Size>1344,500</Size>
     <Visible>False</Visible>
     <CONTROLS>
-      <pnlSway.nudSwayOutGain>3.000</pnlSway.nudSwayOutGain>
+      <pnlSway.nudSwayOutGain>1.000</pnlSway.nudSwayOutGain>
       <pnlSway.nudSwayInGain>10</pnlSway.nudSwayInGain>
       <pnlSway.nudSwayRange>100</pnlSway.nudSwayRange>
-      <pnlSurge.nudSurgeOutGain>3.000</pnlSurge.nudSurgeOutGain>
+      <pnlSurge.nudSurgeOutGain>1.000</pnlSurge.nudSurgeOutGain>
       <pnlSurge.nudSurgeInGain>10</pnlSurge.nudSurgeInGain>
       <pnlSurge.nudSurgeRange>100</pnlSurge.nudSurgeRange>
-      <pnlHeave.nudHeaveOutGain>3.000</pnlHeave.nudHeaveOutGain>
+      <pnlHeave.nudHeaveOutGain>1.000</pnlHeave.nudHeaveOutGain>
       <pnlHeave.nudHeaveInGain>10</pnlHeave.nudHeaveInGain>
-      <pnlHeave.nudHeaveRange>100</pnlHeave.nudHeaveRange>
-      <pnlYaw.nudYawOutGain>3.000</pnlYaw.nudYawOutGain>
+      <pnlHeave.nudHeaveRange>74.7</pnlHeave.nudHeaveRange>
+      <pnlYaw.nudYawOutGain>0</pnlYaw.nudYawOutGain>
       <pnlYaw.nudYawInGain>1</pnlYaw.nudYawInGain>
       <pnlYaw.nudYawRange>0</pnlYaw.nudYawRange>
-      <pnlRoll.nudRollOutGain>3.000</pnlRoll.nudRollOutGain>
+      <pnlRoll.nudRollOutGain>1.000</pnlRoll.nudRollOutGain>
       <pnlRoll.nudRollInGain>1</pnlRoll.nudRollInGain>
       <pnlRoll.nudRollRange>10</pnlRoll.nudRollRange>
-      <pnlPitch.nudPitchOutGain>3.000</pnlPitch.nudPitchOutGain>
+      <pnlPitch.nudPitchOutGain>1.000</pnlPitch.nudPitchOutGain>
       <pnlPitch.nudPitchInGain>1</pnlPitch.nudPitchInGain>
       <pnlPitch.nudPitchRange>10</pnlPitch.nudPitchRange>
       <pnlRoll.nudSwayInRollOutGain>1</pnlRoll.nudSwayInRollOutGain>
@@ -122,7 +122,7 @@
       <pnlPitch.afcPitchFilter.txtFilterText>VALUE</pnlPitch.afcPitchFilter.txtFilterText>
       <pnlRoll.afcSwayInRollFilter.txtFilterText>VALUE</pnlRoll.afcSwayInRollFilter.txtFilterText>
       <pnlRoll.afcRollFilter.txtFilterText>VALUE</pnlRoll.afcRollFilter.txtFilterText>
-      <pnlYaw.afcYawFilter.txtFilterText>VALUE</pnlYaw.afcYawFilter.txtFilterText>
+      <pnlYaw.afcYawFilter.txtFilterText>0</pnlYaw.afcYawFilter.txtFilterText>
       <pnlHeave.afcHeaveFilter.txtFilterText>VALUE</pnlHeave.afcHeaveFilter.txtFilterText>
       <pnlSurge.afcSurgeFilter.txtFilterText>VALUE</pnlSurge.afcSurgeFilter.txtFilterText>
       <pnlSway.afcSwayFilter.txtFilterText>VALUE</pnlSway.afcSwayFilter.txtFilterText>
@@ -147,7 +147,7 @@
       <pnlSurge.ddlSurgeValue>Longitudinal acceleration (m/s²)</pnlSurge.ddlSurgeValue>
       <pnlSway.ddlSwayValue>Lateral acceleration (m/s²)</pnlSway.ddlSwayValue>
       <TVInputSelection>
-        <item>SOURCE :: JOYSTICKS</item>
+        <item>SOURCE :: LFS (UDP)</item>
       </TVInputSelection>
       <pnlPitch.hsPitchInOut>0;0</pnlPitch.hsPitchInOut>
       <pnlRoll.hsRollInOut>0;0</pnlRoll.hsRollInOut>
@@ -160,7 +160,7 @@
   <RIG>
     <Type>Mover.Rigs.LinearHexapod</Type>
     <Name>RIG :: LINEAR HEXAPOD</Name>
-    <Location>-167,196</Location>
+    <Location>0,196</Location>
     <Size>1352,608</Size>
     <Visible>False</Visible>
     <CONTROLS>
@@ -275,25 +275,59 @@
   <VIEWER_3D>
     <Type>Mover.Viewers.View3D</Type>
     <Name>3D VIEWER</Name>
-    <Location>358,125</Location>
-    <Size>400,400</Size>
-    <Visible>False</Visible>
+    <Location>-1298,480</Location>
+    <Size>400,471</Size>
+    <Visible>True</Visible>
     <CONTROLS>
-      <NUDDistance>3000</NUDDistance>
-      <NUDZRotation>1</NUDZRotation>
-      <NUDXRotation>27</NUDXRotation>
+      <NUDDistance>2420</NUDDistance>
+      <NUDZRotation>-3</NUDZRotation>
+      <NUDXRotation>22</NUDXRotation>
       <TXTUniqueName>9</TXTUniqueName>
       <TXTName>3D VIEWER</TXTName>
-      <CHKTopMost>False</CHKTopMost>
+      <CHKTopMost>True</CHKTopMost>
       <DDLProjection>Perspective</DDLProjection>
       <ddlRigs>RIG :: LINEAR HEXAPOD</ddlRigs>
     </CONTROLS>
   </VIEWER_3D>
+  <SOURCE>
+    <Type>Mover.Sources.UDP.LFS</Type>
+    <Name>SOURCE :: LFS (UDP)</Name>
+    <Location>-1007,428</Location>
+    <Size>550,550</Size>
+    <Visible>True</Visible>
+    <CONTROLS>
+      <PNLOptions.NUDSway>0</PNLOptions.NUDSway>
+      <PNLOptions.NUDSurge>0</PNLOptions.NUDSurge>
+      <PNLOptions.NUDHeave>0</PNLOptions.NUDHeave>
+      <PNLOptions.UDPGauge.NUDPort>4124</PNLOptions.UDPGauge.NUDPort>
+      <PNLOptions.UDPSim.NUDPort>4123</PNLOptions.UDPSim.NUDPort>
+      <PNLOptions.UDPGauge.NUDForwardPort>4126</PNLOptions.UDPGauge.NUDForwardPort>
+      <PNLOptions.UDPSim.NUDForwardPort>4125</PNLOptions.UDPSim.NUDForwardPort>
+      <PNLOptions.UDPGauge.NUDIP1>255</PNLOptions.UDPGauge.NUDIP1>
+      <PNLOptions.UDPSim.NUDIP1>255</PNLOptions.UDPSim.NUDIP1>
+      <PNLOptions.UDPGauge.NUDIP2>255</PNLOptions.UDPGauge.NUDIP2>
+      <PNLOptions.UDPSim.NUDIP2>255</PNLOptions.UDPSim.NUDIP2>
+      <PNLOptions.UDPGauge.NUDIP3>255</PNLOptions.UDPGauge.NUDIP3>
+      <PNLOptions.UDPSim.NUDIP3>255</PNLOptions.UDPSim.NUDIP3>
+      <PNLOptions.UDPGauge.NUDIP4>255</PNLOptions.UDPGauge.NUDIP4>
+      <PNLOptions.UDPSim.NUDIP4>255</PNLOptions.UDPSim.NUDIP4>
+      <PNLOptions.AFCCalculationsFilter.txtFilterText>VALUE</PNLOptions.AFCCalculationsFilter.txtFilterText>
+      <TXTUniqueName>11</TXTUniqueName>
+      <TXTName>SOURCE :: LFS (UDP)</TXTName>
+      <SHInputValues.chkShowHide>True</SHInputValues.chkShowHide>
+      <SHOptions.chkShowHide>True</SHOptions.chkShowHide>
+      <PNLOptions.UDPGauge.CHKForwardUDP>False</PNLOptions.UDPGauge.CHKForwardUDP>
+      <PNLOptions.UDPSim.CHKForwardUDP>False</PNLOptions.UDPSim.CHKForwardUDP>
+      <CHKAutoConnect>False</CHKAutoConnect>
+      <CHKTopMost>False</CHKTopMost>
+    </CONTROLS>
+  </SOURCE>
   <Z_ORDER>
-    <item>3</item>
-    <item>9</item>
-    <item>5</item>
-    <item>8</item>
     <item>7</item>
+    <item>5</item>
+    <item>3</item>
+    <item>8</item>
+    <item>11</item>
+    <item>9</item>
   </Z_ORDER>
 </FLYPT_MOVER>
