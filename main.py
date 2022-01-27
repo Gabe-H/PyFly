@@ -89,6 +89,18 @@ if __name__ == "__main__":
     odrv2.axis1
   ]
   moveToMid(1000/(INTERVAL_LOOPS*2))
+  
+  done = False
+  while not done:
+    print("Are all motors centered? (y/n): ")
+    a = input()
+    if (a=='y') or (a=='Y'):
+      done = True
+    elif (a=='n') or (a=='N'):
+      done = False
+    else:
+      print("Invalid response, try again")
+      done = False 
 
   print("Ready")
   while True:
