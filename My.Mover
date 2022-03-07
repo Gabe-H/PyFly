@@ -85,29 +85,62 @@
       <CHKTopMost>False</CHKTopMost>
     </CONTROLS>
   </SOURCE>
+  <SOURCE>
+    <Type>Mover.Sources.UDP.LFS</Type>
+    <Name>SOURCE :: LFS (UDP)</Name>
+    <Location>0,428</Location>
+    <Size>550,550</Size>
+    <Visible>True</Visible>
+    <CONTROLS>
+      <PNLOptions.NUDSway>0</PNLOptions.NUDSway>
+      <PNLOptions.NUDSurge>0</PNLOptions.NUDSurge>
+      <PNLOptions.NUDHeave>0</PNLOptions.NUDHeave>
+      <PNLOptions.UDPGauge.NUDPort>4124</PNLOptions.UDPGauge.NUDPort>
+      <PNLOptions.UDPSim.NUDPort>4123</PNLOptions.UDPSim.NUDPort>
+      <PNLOptions.UDPGauge.NUDForwardPort>4126</PNLOptions.UDPGauge.NUDForwardPort>
+      <PNLOptions.UDPSim.NUDForwardPort>4125</PNLOptions.UDPSim.NUDForwardPort>
+      <PNLOptions.UDPGauge.NUDIP1>255</PNLOptions.UDPGauge.NUDIP1>
+      <PNLOptions.UDPSim.NUDIP1>255</PNLOptions.UDPSim.NUDIP1>
+      <PNLOptions.UDPGauge.NUDIP2>255</PNLOptions.UDPGauge.NUDIP2>
+      <PNLOptions.UDPSim.NUDIP2>255</PNLOptions.UDPSim.NUDIP2>
+      <PNLOptions.UDPGauge.NUDIP3>255</PNLOptions.UDPGauge.NUDIP3>
+      <PNLOptions.UDPSim.NUDIP3>255</PNLOptions.UDPSim.NUDIP3>
+      <PNLOptions.UDPGauge.NUDIP4>255</PNLOptions.UDPGauge.NUDIP4>
+      <PNLOptions.UDPSim.NUDIP4>255</PNLOptions.UDPSim.NUDIP4>
+      <PNLOptions.AFCCalculationsFilter.txtFilterText>VALUE</PNLOptions.AFCCalculationsFilter.txtFilterText>
+      <TXTUniqueName>11</TXTUniqueName>
+      <TXTName>SOURCE :: LFS (UDP)</TXTName>
+      <SHInputValues.chkShowHide>True</SHInputValues.chkShowHide>
+      <SHOptions.chkShowHide>True</SHOptions.chkShowHide>
+      <PNLOptions.UDPGauge.CHKForwardUDP>False</PNLOptions.UDPGauge.CHKForwardUDP>
+      <PNLOptions.UDPSim.CHKForwardUDP>False</PNLOptions.UDPSim.CHKForwardUDP>
+      <CHKAutoConnect>False</CHKAutoConnect>
+      <CHKTopMost>False</CHKTopMost>
+    </CONTROLS>
+  </SOURCE>
   <POSE>
     <Type>Mover.Poses.AdvancedPoseFromMotion</Type>
     <Name>POSE :: FROM MOTION</Name>
-    <Location>0,190</Location>
+    <Location>410,738</Location>
     <Size>1344,500</Size>
     <Visible>False</Visible>
     <CONTROLS>
-      <pnlSway.nudSwayOutGain>1.000</pnlSway.nudSwayOutGain>
+      <pnlSway.nudSwayOutGain>1</pnlSway.nudSwayOutGain>
       <pnlSway.nudSwayInGain>10</pnlSway.nudSwayInGain>
       <pnlSway.nudSwayRange>100</pnlSway.nudSwayRange>
-      <pnlSurge.nudSurgeOutGain>1.000</pnlSurge.nudSurgeOutGain>
+      <pnlSurge.nudSurgeOutGain>1</pnlSurge.nudSurgeOutGain>
       <pnlSurge.nudSurgeInGain>10</pnlSurge.nudSurgeInGain>
       <pnlSurge.nudSurgeRange>100</pnlSurge.nudSurgeRange>
-      <pnlHeave.nudHeaveOutGain>1.000</pnlHeave.nudHeaveOutGain>
+      <pnlHeave.nudHeaveOutGain>1</pnlHeave.nudHeaveOutGain>
       <pnlHeave.nudHeaveInGain>10</pnlHeave.nudHeaveInGain>
       <pnlHeave.nudHeaveRange>74.7</pnlHeave.nudHeaveRange>
       <pnlYaw.nudYawOutGain>0</pnlYaw.nudYawOutGain>
       <pnlYaw.nudYawInGain>1</pnlYaw.nudYawInGain>
       <pnlYaw.nudYawRange>0</pnlYaw.nudYawRange>
-      <pnlRoll.nudRollOutGain>1.000</pnlRoll.nudRollOutGain>
+      <pnlRoll.nudRollOutGain>1</pnlRoll.nudRollOutGain>
       <pnlRoll.nudRollInGain>1</pnlRoll.nudRollInGain>
       <pnlRoll.nudRollRange>10</pnlRoll.nudRollRange>
-      <pnlPitch.nudPitchOutGain>1.000</pnlPitch.nudPitchOutGain>
+      <pnlPitch.nudPitchOutGain>1</pnlPitch.nudPitchOutGain>
       <pnlPitch.nudPitchInGain>1</pnlPitch.nudPitchInGain>
       <pnlPitch.nudPitchRange>10</pnlPitch.nudPitchRange>
       <pnlRoll.nudSwayInRollOutGain>1</pnlRoll.nudSwayInRollOutGain>
@@ -147,7 +180,8 @@
       <pnlSurge.ddlSurgeValue>Longitudinal acceleration (m/s²)</pnlSurge.ddlSurgeValue>
       <pnlSway.ddlSwayValue>Lateral acceleration (m/s²)</pnlSway.ddlSwayValue>
       <TVInputSelection>
-        <item>SOURCE :: LFS (UDP)</item>
+        <item>SOURCE :: XPLANE 11 (UDP) AIR</item>
+        <item>SOURCE :: XPLANE 11 (UDP) GROUND</item>
       </TVInputSelection>
       <pnlPitch.hsPitchInOut>0;0</pnlPitch.hsPitchInOut>
       <pnlRoll.hsRollInOut>0;0</pnlRoll.hsRollInOut>
@@ -275,13 +309,13 @@
   <VIEWER_3D>
     <Type>Mover.Viewers.View3D</Type>
     <Name>3D VIEWER</Name>
-    <Location>-1298,480</Location>
+    <Location>1834,650</Location>
     <Size>400,471</Size>
-    <Visible>True</Visible>
+    <Visible>False</Visible>
     <CONTROLS>
       <NUDDistance>2420</NUDDistance>
-      <NUDZRotation>-3</NUDZRotation>
-      <NUDXRotation>22</NUDXRotation>
+      <NUDZRotation>375</NUDZRotation>
+      <NUDXRotation>8</NUDXRotation>
       <TXTUniqueName>9</TXTUniqueName>
       <TXTName>3D VIEWER</TXTName>
       <CHKTopMost>True</CHKTopMost>
@@ -290,44 +324,44 @@
     </CONTROLS>
   </VIEWER_3D>
   <SOURCE>
-    <Type>Mover.Sources.UDP.LFS</Type>
-    <Name>SOURCE :: LFS (UDP)</Name>
-    <Location>-1007,428</Location>
-    <Size>550,550</Size>
+    <Type>Mover.Sources.UDP.XPlane11</Type>
+    <Name>SOURCE :: XPLANE 11 (UDP)</Name>
+    <Location>182,182</Location>
+    <Size>551,550</Size>
     <Visible>True</Visible>
     <CONTROLS>
+      <PNLOptions.NUDPort>49000</PNLOptions.NUDPort>
+      <PNLOptions.NUDToGroundSpeed>0.2</PNLOptions.NUDToGroundSpeed>
+      <PNLOptions.NUDToAirSpeed>0.01</PNLOptions.NUDToAirSpeed>
+      <PNLOptions.NUDSpeedEffect>0.015</PNLOptions.NUDSpeedEffect>
+      <PNLOptions.NUDForwardPort>48000</PNLOptions.NUDForwardPort>
       <PNLOptions.NUDSway>0</PNLOptions.NUDSway>
       <PNLOptions.NUDSurge>0</PNLOptions.NUDSurge>
       <PNLOptions.NUDHeave>0</PNLOptions.NUDHeave>
-      <PNLOptions.UDPGauge.NUDPort>4124</PNLOptions.UDPGauge.NUDPort>
-      <PNLOptions.UDPSim.NUDPort>4123</PNLOptions.UDPSim.NUDPort>
-      <PNLOptions.UDPGauge.NUDForwardPort>4126</PNLOptions.UDPGauge.NUDForwardPort>
-      <PNLOptions.UDPSim.NUDForwardPort>4125</PNLOptions.UDPSim.NUDForwardPort>
-      <PNLOptions.UDPGauge.NUDIP1>255</PNLOptions.UDPGauge.NUDIP1>
-      <PNLOptions.UDPSim.NUDIP1>255</PNLOptions.UDPSim.NUDIP1>
-      <PNLOptions.UDPGauge.NUDIP2>255</PNLOptions.UDPGauge.NUDIP2>
-      <PNLOptions.UDPSim.NUDIP2>255</PNLOptions.UDPSim.NUDIP2>
-      <PNLOptions.UDPGauge.NUDIP3>255</PNLOptions.UDPGauge.NUDIP3>
-      <PNLOptions.UDPSim.NUDIP3>255</PNLOptions.UDPSim.NUDIP3>
-      <PNLOptions.UDPGauge.NUDIP4>255</PNLOptions.UDPGauge.NUDIP4>
-      <PNLOptions.UDPSim.NUDIP4>255</PNLOptions.UDPSim.NUDIP4>
+      <PNLOptions.NUDIP1>255</PNLOptions.NUDIP1>
+      <PNLOptions.NUDIP2>255</PNLOptions.NUDIP2>
+      <PNLOptions.NUDIP3>255</PNLOptions.NUDIP3>
+      <PNLOptions.NUDIP4>255</PNLOptions.NUDIP4>
+      <PNLOptions.AFCLongitudinalFilter.txtFilterText>LDYNLP(VALUE;0;10)</PNLOptions.AFCLongitudinalFilter.txtFilterText>
+      <PNLOptions.AFCLateralFilter.txtFilterText>LDYNLP(VALUE;0;10)</PNLOptions.AFCLateralFilter.txtFilterText>
       <PNLOptions.AFCCalculationsFilter.txtFilterText>VALUE</PNLOptions.AFCCalculationsFilter.txtFilterText>
-      <TXTUniqueName>11</TXTUniqueName>
-      <TXTName>SOURCE :: LFS (UDP)</TXTName>
+      <TXTUniqueName>13</TXTUniqueName>
+      <TXTName>SOURCE :: XPLANE 11 (UDP)</TXTName>
       <SHInputValues.chkShowHide>True</SHInputValues.chkShowHide>
       <SHOptions.chkShowHide>True</SHOptions.chkShowHide>
-      <PNLOptions.UDPGauge.CHKForwardUDP>False</PNLOptions.UDPGauge.CHKForwardUDP>
-      <PNLOptions.UDPSim.CHKForwardUDP>False</PNLOptions.UDPSim.CHKForwardUDP>
+      <PNLOptions.CHKUsePilotPositionFromGame>False</PNLOptions.CHKUsePilotPositionFromGame>
+      <PNLOptions.CHKForwardUDP>False</PNLOptions.CHKForwardUDP>
       <CHKAutoConnect>False</CHKAutoConnect>
       <CHKTopMost>False</CHKTopMost>
     </CONTROLS>
   </SOURCE>
   <Z_ORDER>
     <item>7</item>
-    <item>5</item>
     <item>3</item>
     <item>8</item>
     <item>11</item>
+    <item>5</item>
+    <item>13</item>
     <item>9</item>
   </Z_ORDER>
 </FLYPT_MOVER>
