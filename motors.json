@@ -6,15 +6,15 @@
             {
                 "id": "2",
                 "pos_gain": 22,
-                "vel_gain": 0.4,
-                "vel_integrator_gain": 0,
+                "vel_gain": 0.3,
+                "vel_integrator_gain": 15,
                 "current_lim": 15,
                 "vel_limit": 45
             },
             {
                 "id": "1",
-                "pos_gain": 21.5,
-                "vel_gain": 0.4,
+                "pos_gain": 22,
+                "vel_gain": 0.3,
                 "vel_integrator_gain": 15,
                 "current_lim": 15,
                 "vel_limit": 45
@@ -29,7 +29,7 @@
                 "id": "3",
                 "pos_gain": 22,
                 "vel_gain": 0.3,
-                "vel_integrator_gain": 0,
+                "vel_integrator_gain": 15,
                 "current_lim": 15,
                 "vel_limit": 45
             },
@@ -37,7 +37,7 @@
                 "id": "4",
                 "pos_gain": 22,
                 "vel_gain": 0.3,
-                "vel_integrator_gain": 0,
+                "vel_integrator_gain": 15,
                 "current_lim": 15,
                 "vel_limit": 45
             }
@@ -51,13 +51,13 @@
                 "id": "2",
                 "pos_gain": 22,
                 "vel_gain": 0.3,
-                "vel_integrator_gain": 0,
+                "vel_integrator_gain": 15,
                 "current_lim": 15,
                 "vel_limit": 45
             },
             {
                 "id": "1",
-                "pos_gain": 21.5,
+                "pos_gain": 22,
                 "vel_gain": 0.3,
                 "vel_integrator_gain": 15,
                 "current_lim": 15,
