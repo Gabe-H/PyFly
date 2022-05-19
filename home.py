@@ -43,6 +43,12 @@ waitForIdle()
 for odrv in support.drives:
     requestAxisStates(odrv, AXIS_STATE_CLOSED_LOOP_CONTROL)
 
+
+for odrv in support.drives:
+    incAxes(odrv, 1)
+
+input('Remove actuator blocks, then press enter')
+
 print('Move motors until they are near level with each other')
 while True:
     move_cmd = input('Enter axis (cancel: x): ')
