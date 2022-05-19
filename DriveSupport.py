@@ -22,16 +22,19 @@ class ConnectToDrive():
         axis.controller.config.vel_limit = pids['vel_limit']
         axis.motor.config.current_lim = pids["current_lim"]
 
-        id = pids['id']
-        print(f'Motor #{id} settings set.')
+        print(f'Motor settings set.')
 
     def DetermineParameters(self, drive):
-        with open(f'./motors.json') as f:
+        with open('config.json') as f:
             data = json.load(f)
-            for setting in data:
-                if setting['serial'] == str(drive.serial_number):
-                    self.SetAxisParam(drive.axis0, setting['pids'][0])
-                    self.SetAxisParam(drive.axis1, setting['pids'][1])
+            self.SetAxisParam(drive.axis0, data['pids'])
+            self.SetAxisParam(drive.axis1, data['pids'])
+        # with open(f'./motors.json') as f:
+        #     data = json.load(f)
+            # for setting in data:
+                # if setting['serial'] == str(drive.serial_number):
+                    # self.SetAxisParam(drive.axis0, setting['pids'][0])
+                    # self.SetAxisParam(drive.axis1, setting['pids'][1])
 
         return drive
     

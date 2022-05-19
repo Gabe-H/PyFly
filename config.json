@@ -1,0 +1,9 @@
+{
+    "pids": {
+        "pos_gain": 22,
+        "vel_gain": 0.3,
+        "vel_integrator_gain": 15,
+        "current_lim": 25,
+        "vel_limit": 65
+    }
+}

@@ -49,26 +49,26 @@ for odrv in support.drives:
 
 input('Remove actuator blocks, then press enter')
 
-print('Move motors until they are near level with each other')
-while True:
-    move_cmd = input('Enter axis (cancel: x): ')
-    if move_cmd == 'x':
-        print('Offset quit')
-        break
+# print('Move motors until they are near level with each other')
+# while True:
+#     move_cmd = input('Enter axis (cancel: x): ')
+#     if move_cmd == 'x':
+#         print('Offset quit')
+#         break
 
-    drive_cmd = int(move_cmd)
-    if drive_cmd < 0 and drive_cmd > 2:
-        print('Invalid drive index')
-        continue
+#     drive_cmd = int(move_cmd)
+#     if drive_cmd < 0 and drive_cmd > 2:
+#         print('Invalid drive index')
+#         continue
 
-    while True:
-        inc = 0
-        move_inc = input('Increment (+/-/x): ')
-        if move_inc == 'x':
-            break
-        inc += move_inc.count('+')
-        inc -= move_inc.count('-')
-        incAxes(support.drives[drive_cmd], inc)
+#     while True:
+#         inc = 0
+#         move_inc = input('Increment (+/-/x): ')
+#         if move_inc == 'x':
+#             break
+#         inc += move_inc.count('+')
+#         inc -= move_inc.count('-')
+#         incAxes(support.drives[drive_cmd], inc)
 
 for odrv in support.drives:
     requestAxisStates(odrv, AXIS_STATE_HOMING)
