@@ -1,6 +1,4 @@
 import time
-from unittest.case import doModuleCleanups
-
 from odrive.enums import *
 import DriveSupport
 from constants import *
@@ -8,7 +6,6 @@ from constants import *
 
 # serialNumbers = ['205435783056', '206535823056', '207535863056']
 serialNumbers = ['206535823056', '205435783056', '207535863056']
-# serialNumbers = ['207535863056']
 
 support = DriveSupport.ConnectToDrive(serialNumbers)
 
