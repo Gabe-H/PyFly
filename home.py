@@ -1,11 +1,13 @@
 import time
+
 from odrive.enums import *
 import DriveSupport
 from constants import *
 
-
 # serialNumbers = ['205435783056', '206535823056', '207535863056']
 serialNumbers = ['206535823056', '205435783056', '207535863056']
+# serialNumbers = ['206535823056', '207535863056']
+# serialNumbers = ['207535863056']
 
 support = DriveSupport.ConnectToDrive(serialNumbers)
 
@@ -28,6 +30,15 @@ def incAxes(odrv, inc):
     odrv.axis0.controller.input_pos += inc
     odrv.axis1.controller.input_pos += inc
 
+def setEndstops(enabled):
+    for odrv in support.drives:
+        for axis in [odrv.axis0, odrv.axis1]:
+            axis.min_endstop.config.enabled = enabled
+
+setEndstops(False)
+print('Endstops disabled')
+
+time.sleep(1)
 
 for odrv in support.drives:
     requestAxisStates(odrv, AXIS_STATE_FULL_CALIBRATION_SEQUENCE)
@@ -41,10 +52,15 @@ for odrv in support.drives:
     requestAxisStates(odrv, AXIS_STATE_CLOSED_LOOP_CONTROL)
 
 
-for odrv in support.drives:
-    incAxes(odrv, 1)
+# for odrv in support.drives:
+#     incAxes(odrv, 5)
 
-input('Remove actuator blocks, then press enter')
+time.sleep(5)
+
+setEndstops(True)
+print('Endstops enabled')
+
+# input('Remove actuator blocks, then press enter')
 
 # print('Move motors until they are near level with each other')
 # while True:
