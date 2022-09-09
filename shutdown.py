@@ -3,6 +3,16 @@ from odrive.enums import *
 import DriveSupport
 from constants import *
 
+#######################
+##       NOTICE      ##
+#######################
+
+# I haven't tested this script in a long time, and many changes have
+# been made since I last ran this. Verify the logic and run with
+# caution. Biggest concern would be the homing offset on the last
+# two lines. The actuator endstop offset should be correct at +40,
+# but you'll want to verify that before running.
+
 
 serialNumbers = ['206535823056', '205435783056', '207535863056']
 
