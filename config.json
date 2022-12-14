@@ -1,4 +1,8 @@
 {
+    "serial_numbers":
+    [
+        "366F386A3131"
+    ],
     "pids": {
         "pos_gain": 22,
         "vel_gain": 0.3,

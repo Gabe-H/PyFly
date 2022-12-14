@@ -3,10 +3,7 @@ from odrive.enums import *
 import DriveSupport
 from constants import *
 
-serialNumbers = ['205435783056', '206535823056', '207535863056']
-
-# Establish connection to odrives
-support = DriveSupport.ConnectToDrive(serialNumbers)
+support = DriveSupport.ConnectToDrive()
 
 # used to quickly request states on both odrive axes
 def requestAxisStates(odrv, state):
@@ -18,7 +15,7 @@ def waitForIdle():
     while True:
         drivesNotCalibrated = 0
         for odrv in support.drives:
-            if odrv.axis0.current_state != AXIS_STATE_IDLE or odrv.axis1.current_state != AXIS_STATE_IDLE:
+            if odrv.axis0.current_state != AxisState.IDLE or odrv.axis1.current_state != AxisState.IDLE:
                 drivesNotCalibrated += 1
         if drivesNotCalibrated == 0:
             print('All axes idle')
@@ -50,7 +47,7 @@ time.sleep(1)
 
 # Request full calibration on all axes
 for odrv in support.drives:
-    requestAxisStates(odrv, AXIS_STATE_FULL_CALIBRATION_SEQUENCE)
+    requestAxisStates(odrv, AxisState.FULL_CALIBRATION_SEQUENCE)
 print('Calibrating')
 
 time.sleep(1)
@@ -60,11 +57,11 @@ waitForIdle()
 
 # Enable closed loop control on all axes
 for odrv in support.drives:
-    requestAxisStates(odrv, AXIS_STATE_CLOSED_LOOP_CONTROL)
+    requestAxisStates(odrv, AxisState.CLOSED_LOOP_CONTROL)
 
 # Re-enable endstops
-setEndstops(True)
-print('Endstops enabled')
+# setEndstops(True)
+# print('Endstops enabled')
 
 #####################################################################
 ## !! This can be used to move the motors by keyboard before homing !!
@@ -96,16 +93,16 @@ print('Endstops enabled')
 #####################################################################
 
 # Home all axes
-for odrv in support.drives:
-    requestAxisStates(odrv, AXIS_STATE_HOMING)
-print('Homing...')
+# for odrv in support.drives:
+    # requestAxisStates(odrv, AxisState.HOMING)
+# print('Homing...')
 
 # Wait until all motors are idle after homing
-waitForIdle()
+# waitForIdle()
 
 # Re-enable closed loop control for actual simulator input
 for odrv in support.drives:
-    requestAxisStates(odrv, AXIS_STATE_CLOSED_LOOP_CONTROL)
+    requestAxisStates(odrv, AxisState.CLOSED_LOOP_CONTROL)
 print('Axes at 0')
 
 # Configure the input filter bandwidth

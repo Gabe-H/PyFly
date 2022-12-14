@@ -5,12 +5,15 @@ import json, time
 class ConnectToDrive():
 
     # Establish connection to ODrives based on serial number(s)
-    def __init__(self, serialNumbers):
+    def __init__(self):
+        with open('config.json') as f:
+            self.serialNumbers = json.load(f)['serial_numbers']
+
         self.drives = [] # Init array of drives
-        for i in range(len(serialNumbers)):
+        for i in range(len(self.serialNumbers)):
             print('Searching for ODrive...')
-            self.drives.append(self.DetermineParameters(odrive.find_any(serial_number=serialNumbers[i])))
-            print(f'({i + 1}/{len(serialNumbers)}) ODrives Connected...')
+            self.drives.append(self.DetermineParameters(odrive.find_any(serial_number=self.serialNumbers[i])))
+            print(f'({i + 1}/{len(self.serialNumbers)}) ODrives Connected...')
         
         print(f'\n{len(self.drives)} connected\n')
 
@@ -37,18 +40,18 @@ class ConnectToDrive():
     # Can be used to make calibration quicker; do not calibrate anything that's already been calibrated
     def DetermineAxisState(self, motor_ready, enc_ready):
         if motor_ready and enc_ready:
-            return AXIS_STATE_IDLE
+            return AxisState.IDLE
         if motor_ready and not(enc_ready):
-            return AXIS_STATE_ENCODER_OFFSET_CALIBRATION
+            return AxisState.ENCODER_OFFSET_CALIBRATION
         if not(motor_ready) and enc_ready:
-            return AXIS_STATE_MOTOR_CALIBRATION
-        return AXIS_STATE_FULL_CALIBRATION_SEQUENCE
+            return AxisState.MOTOR_CALIBRATION
+        return AxisState.FULL_CALIBRATION_SEQUENCE
 
     # Calibrate specified axis of ODrive.
     # `force_full_calibration` can be enabled to calibrate the axis using FULL_CALIBRATION (motor and encoder)
     def CalibrateAxis(self, axis, force_full_calibration=False):
         if (force_full_calibration):
-            axis.requested_state = AXIS_STATE_FULL_CALIBRATION_SEQUENCE
+            axis.requested_state = AxisState.FULL_CALIBRATION_SEQUENCE
         else:
             axis.requested_state = self.DetermineAxisState(axis.motor.is_calibrated, axis.encoder.is_ready)
 
@@ -66,7 +69,7 @@ class ConnectToDrive():
         while True:
             drivesNotCalibrated = 0
             for drive in self.drives:
-                if drive.axis0.current_state != AXIS_STATE_IDLE or drive.axis1.current_state != AXIS_STATE_IDLE:
+                if drive.axis0.current_state != AxisState.IDLE or drive.axis1.current_state != AxisState.IDLE:
                     drivesNotCalibrated += 1
             if drivesNotCalibrated == 0:
                 break
@@ -77,11 +80,11 @@ class ConnectToDrive():
             
         for drive in self.drives:
             # Set the controller to use the encoder for closed loop feedback
-            drive.axis0.requested_state = AXIS_STATE_CLOSED_LOOP_CONTROL
-            drive.axis1.requested_state = AXIS_STATE_CLOSED_LOOP_CONTROL
+            drive.axis0.requested_state = AxisState.CLOSED_LOOP_CONTROL
+            drive.axis1.requested_state = AxisState.CLOSED_LOOP_CONTROL
             # Set the input mode to position control
-            drive.axis0.controller.config.input_mode = INPUT_MODE_POS_FILTER
-            drive.axis1.controller.config.input_mode = INPUT_MODE_POS_FILTER
+            drive.axis0.controller.config.input_mode = InputMode.POS_FILTER
+            drive.axis1.controller.config.input_mode = InputMode.POS_FILTER
             # Set the feedrate as requested
             drive.axis0.controller.config.input_filter_bandwidth = feedrate
             drive.axis1.controller.config.input_filter_bandwidth = feedrate
@@ -92,7 +95,7 @@ class ConnectToDrive():
     def Stop(self):
         drives = self.drives
         for drive in drives:
-            drive.axis0.requested_state = AXIS_STATE_IDLE
-            drive.axis1.requested_state = AXIS_STATE_IDLE
+            drive.axis0.requested_state = AxisState.IDLE
+            drive.axis1.requested_state = AxisState.IDLE
         
         print('Drives idle')
