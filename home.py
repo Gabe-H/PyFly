@@ -105,16 +105,4 @@ for odrv in support.drives:
     requestAxisStates(odrv, AxisState.CLOSED_LOOP_CONTROL)
 print('Axes at 0')
 
-# Configure the input filter bandwidth
-for odrv in support.drives:
-        odrv.axis0.controller.config.input_mode = InputMode.POS_FILTER
-        odrv.axis1.controller.config.input_mode = InputMode.POS_FILTER
-
-        # odrv.axis0.controller.config.input_filter_bandwidth = 1000/(INTERVAL_LOOPS*2)
-        # odrv.axis1.controller.config.input_filter_bandwidth = 1000/(INTERVAL_LOOPS*2)
-        # ^ Causing overcurrent
-
-        odrv.axis0.controller.config.input_filter_bandwidth = INPUT_FILTER_BANDWIDTH
-        odrv.axis1.controller.config.input_filter_bandwidth = INPUT_FILTER_BANDWIDTH
-
 print('Done')
