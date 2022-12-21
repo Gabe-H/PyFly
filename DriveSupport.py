@@ -17,14 +17,33 @@ class ConnectToDrive():
         
         print(f'\n{len(self.drives)} connected\n')
 
+    # Set parameters to a given odrive
+    def SetODriveParam(self, drive, config):
+        drive.config.enable_brake_resistor = config['enable_brake_resistor']
+        drive.config.brake_resistance = config['brake_resistance']
+        print(drive.config.dc_max_negative_current)
+        print(type(drive.config.dc_max_negative_current))
+
+        drive.config.dc_max_negative_current = config['dc_max_negative_current']
+
+        print(drive.config.dc_max_negative_current)
+        print(type(drive.config.dc_max_negative_current))
+
+	
+        print(f'ODrive settings set.')
+
     # Set parameters to a given axis
-    # TODO: add all configurations here incase of firmware corruption
-    def SetAxisParam(self, axis, pids):
-        axis.controller.config.pos_gain = pids['pos_gain']
-        axis.controller.config.vel_gain = pids['vel_gain']
-        axis.controller.config.vel_integrator_gain = pids['vel_integrator_gain']
-        axis.controller.config.vel_limit = pids['vel_limit']
-        axis.motor.config.current_lim = pids["current_lim"]
+    def SetAxisParam(self, axis, config):
+        axis.controller.config.pos_gain = config['pos_gain']
+        axis.controller.config.vel_gain = config['vel_gain']
+        axis.controller.config.vel_integrator_gain = config['vel_integrator_gain']
+        axis.controller.config.vel_limit = config['vel_limit']
+        axis.controller.config.input_filter_bandwidth = config['input_filter_bandwidth']
+        axis.motor.config.current_lim = config['current_lim']
+        axis.motor.config.pole_pairs = config['pole_pairs']
+        axis.motor.config.torque_constant = 8.27 / config['motor_kv']
+        axis.motor.config.motor_type = config['motor_type']
+        axis.encoder.config.cpr = config['encoder_cpr']
 
         print(f'Motor settings set.')
 
@@ -32,8 +51,9 @@ class ConnectToDrive():
     def DetermineParameters(self, drive):
         with open('config.json') as f:
             data = json.load(f)
-            self.SetAxisParam(drive.axis0, data['pids'])
-            self.SetAxisParam(drive.axis1, data['pids'])
+            self.SetODriveParam(drive, data['odrive_config'])
+            self.SetAxisParam(drive.axis0, data['motor_config'])
+            self.SetAxisParam(drive.axis1, data['motor_config'])
 
         return drive
     
