@@ -3,7 +3,6 @@ from odrive.enums import *
 import json, time
 
 class ConnectToDrive():
-
     # Establish connection to ODrives based on serial number(s)
     def __init__(self):
         with open('config.json') as f:
@@ -17,14 +16,33 @@ class ConnectToDrive():
         
         print(f'\n{len(self.drives)} connected\n')
 
+    # Set parameters to a given odrive
+    def SetODriveParam(self, drive, config):
+        drive.config.enable_brake_resistor = config['enable_brake_resistor']
+        drive.config.brake_resistance = config['brake_resistance']
+        drive.config.dc_max_negative_current = config['dc_max_negative_current']
+
+        drive.axis0.max_endstop.config.gpio_num = config['axis0_endstop_gpio']
+        drive.axis1.max_endstop.config.gpio_num = config['axis1_endstop_gpio']
+
+        print(f'ODrive settings set.')
+
     # Set parameters to a given axis
-    # TODO: add all configurations here incase of firmware corruption
-    def SetAxisParam(self, axis, pids):
-        axis.controller.config.pos_gain = pids['pos_gain']
-        axis.controller.config.vel_gain = pids['vel_gain']
-        axis.controller.config.vel_integrator_gain = pids['vel_integrator_gain']
-        axis.controller.config.vel_limit = pids['vel_limit']
-        axis.motor.config.current_lim = pids["current_lim"]
+    def SetAxisParam(self, axis, config):
+        # Set to POS_FILTER so that we can use the 'input_filter_bandwidth' option later
+        axis.controller.config.input_mode = InputMode.POS_FILTER
+        
+        # The rest of the settings are controlled from the configuration file
+        axis.controller.config.pos_gain = config['pos_gain']
+        axis.controller.config.vel_gain = config['vel_gain']
+        axis.controller.config.vel_integrator_gain = config['vel_integrator_gain']
+        axis.controller.config.vel_limit = config['vel_limit']
+        axis.controller.config.input_filter_bandwidth = config['input_filter_bandwidth']
+        axis.motor.config.current_lim = config['current_lim']
+        axis.motor.config.pole_pairs = config['pole_pairs']
+        axis.motor.config.torque_constant = 8.27 / config['motor_kv']
+        axis.motor.config.motor_type = config['motor_type']
+        axis.encoder.config.cpr = config['encoder_cpr']
 
         print(f'Motor settings set.')
 
@@ -32,8 +50,16 @@ class ConnectToDrive():
     def DetermineParameters(self, drive):
         with open('config.json') as f:
             data = json.load(f)
-            self.SetAxisParam(drive.axis0, data['pids'])
-            self.SetAxisParam(drive.axis1, data['pids'])
+            self.SetODriveParam(drive, data['odrive_config'])
+            self.SetAxisParam(drive.axis0, data['motor_config'])
+            self.SetAxisParam(drive.axis1, data['motor_config'])
+
+        # Clear any existing errors to start in a stable state
+        # Changing certain settings (such as enabling the brake resistor) will leave the ODrive in an errored state until
+        # we either reboot the entire ODrive (which I would like to do but haven't been able to do without crashing the
+        # entire Python script) or call drive.clear_errors(). This *will* clear any legitimate errors too but hopefully
+        # any actual errors will just reappear as soon as we try to move the motors.
+        drive.clear_errors()
 
         return drive
     
@@ -57,7 +83,7 @@ class ConnectToDrive():
 
     # Start the library. Calibrate motors, then configure the control mode
     # Returns a tuple of the calibrated drives.
-    def begin(self, feedrate):
+    def begin(self):
         print('Starting calibration...')
         for i in range(len(self.drives)):
             drive = self.drives[i]
@@ -85,9 +111,9 @@ class ConnectToDrive():
             # Set the input mode to position control
             drive.axis0.controller.config.input_mode = InputMode.POS_FILTER
             drive.axis1.controller.config.input_mode = InputMode.POS_FILTER
-            # Set the feedrate as requested
-            drive.axis0.controller.config.input_filter_bandwidth = feedrate
-            drive.axis1.controller.config.input_filter_bandwidth = feedrate
+            # Enable the endstops, if not already
+            drive.axis0.min_endstop.config.enabled = True
+            drive.axis1.min_endstop.config.enabled = True
 
         return tuple(self.drives)
 

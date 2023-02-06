@@ -2,6 +2,7 @@ import time
 from odrive.enums import *
 import DriveSupport
 from constants import *
+#from odrive.utils import dump_errors
 
 support = DriveSupport.ConnectToDrive()
 
@@ -45,6 +46,10 @@ print('Endstops disabled')
 
 time.sleep(1)
 
+# Run setup on all odrive boards
+drives = support.begin()
+
+"""
 # Request full calibration on all axes
 for odrv in support.drives:
     requestAxisStates(odrv, AxisState.FULL_CALIBRATION_SEQUENCE)
@@ -62,34 +67,35 @@ for odrv in support.drives:
 # Re-enable endstops
 # setEndstops(True)
 # print('Endstops enabled')
+"""
 
 #####################################################################
 ## !! This can be used to move the motors by keyboard before homing !!
+""" # Comment or uncomment to disable or enable the code section
+ input('Press enter to move motors by keyboard control')
 
-# input('Press enter to move motors by keyboard control')
+ print('Move motors until they are near level with each other')
+ while True:
+     move_cmd = input('Enter axis (cancel: x): ')
+     if move_cmd == 'x':
+         print('Offset quit')
+         break
 
-# print('Move motors until they are near level with each other')
-# while True:
-#     move_cmd = input('Enter axis (cancel: x): ')
-#     if move_cmd == 'x':
-#         print('Offset quit')
-#         break
+     drive_cmd = int(move_cmd)
+     # Catch bad controller selection
+     if drive_cmd < 0 and drive_cmd > 2:
+         print('Invalid drive index')
+         continue
 
-#     drive_cmd = int(move_cmd)
-#     # Catch bad controller selection
-#     if drive_cmd < 0 and drive_cmd > 2:
-#         print('Invalid drive index')
-#         continue
-
-#     while True:
-#         inc = 0
-#         move_inc = input('Increment (+/-/x): ')
-#         if move_inc == 'x':
-#             break
-#         inc += move_inc.count('+')
-#         inc -= move_inc.count('-')
-#         incAxes(support.drives[drive_cmd], inc)
-
+     while True:
+         inc = 0
+         move_inc = input('Increment (+/-/x): ')
+         if move_inc == 'x':
+             break
+         inc += move_inc.count('+')
+         inc -= move_inc.count('-')
+         incAxes(support.drives[drive_cmd], inc)
+# """ # Don't bother removing this line. It allows the opening block comment line to be enabled/disabled
 #####################################################################
 
 # Home all axes
@@ -101,20 +107,8 @@ for odrv in support.drives:
 # waitForIdle()
 
 # Re-enable closed loop control for actual simulator input
-for odrv in support.drives:
-    requestAxisStates(odrv, AxisState.CLOSED_LOOP_CONTROL)
-print('Axes at 0')
-
-# Configure the input filter bandwidth
-for odrv in support.drives:
-        odrv.axis0.controller.config.input_mode = InputMode.POS_FILTER
-        odrv.axis1.controller.config.input_mode = InputMode.POS_FILTER
-
-        # odrv.axis0.controller.config.input_filter_bandwidth = 1000/(INTERVAL_LOOPS*2)
-        # odrv.axis1.controller.config.input_filter_bandwidth = 1000/(INTERVAL_LOOPS*2)
-        # ^ Causing overcurrent
-
-        odrv.axis0.controller.config.input_filter_bandwidth = INPUT_FILTER_BANDWIDTH
-        odrv.axis1.controller.config.input_filter_bandwidth = INPUT_FILTER_BANDWIDTH
+#for odrv in support.drives:
+#    requestAxisStates(odrv, AxisState.CLOSED_LOOP_CONTROL)
+#print('Axes at 0')
 
 print('Done')
