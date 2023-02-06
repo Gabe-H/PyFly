@@ -1,7 +1,7 @@
 {
     "serial_numbers":
     [
-        "366F386A3131"
+        "367838843131"
     ],
     "motor_config": {
         "pos_gain": 96,
@@ -18,6 +18,8 @@
     "odrive_config": {
         "enable_brake_resistor": true,
         "brake_resistance": 5,
-        "dc_max_negative_current": -10
+        "dc_max_negative_current": -10,
+        "axis0_endstop_gpio": 1,
+        "axis1_endstop_gpio": 2
     }
 }
