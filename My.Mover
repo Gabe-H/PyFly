@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FLYPT_MOVER Version="3.5.3">
   <MAIN>
-    <Location>0,337</Location>
+    <Location>692,301</Location>
   </MAIN>
   <SHARE>
     <ShareUser></ShareUser>
@@ -53,33 +53,52 @@
       <CHKTopMost>False</CHKTopMost>
     </CONTROLS>
   </SOURCE>
+  <SOURCE>
+    <Type>Mover.Sources.MMF.AssettoCorsa</Type>
+    <Name>SOURCE :: ASSETTO CORSA (MMF)</Name>
+    <Location>0,286</Location>
+    <Size>550,550</Size>
+    <Visible>False</Visible>
+    <CONTROLS>
+      <PNLOptions.NUDSway>0</PNLOptions.NUDSway>
+      <PNLOptions.NUDSurge>0</PNLOptions.NUDSurge>
+      <PNLOptions.NUDHeave>0</PNLOptions.NUDHeave>
+      <PNLOptions.AFCCalculationsFilter.txtFilterText>VALUE</PNLOptions.AFCCalculationsFilter.txtFilterText>
+      <TXTUniqueName>16</TXTUniqueName>
+      <TXTName>SOURCE :: ASSETTO CORSA (MMF)</TXTName>
+      <SHOptions.chkShowHide>True</SHOptions.chkShowHide>
+      <SHInputValues.chkShowHide>True</SHInputValues.chkShowHide>
+      <CHKAutoConnect>False</CHKAutoConnect>
+      <CHKTopMost>False</CHKTopMost>
+    </CONTROLS>
+  </SOURCE>
   <POSE>
     <Type>Mover.Poses.AdvancedPoseFromMotion</Type>
     <Name>POSE :: FROM MOTION</Name>
-    <Location>0,438</Location>
+    <Location>205,609</Location>
     <Size>1344,500</Size>
-    <Visible>False</Visible>
+    <Visible>True</Visible>
     <CONTROLS>
-      <pnlSway.nudSwayOutGain>0.2</pnlSway.nudSwayOutGain>
+      <pnlSway.nudSwayOutGain>1</pnlSway.nudSwayOutGain>
       <pnlSway.nudSwayInGain>1</pnlSway.nudSwayInGain>
-      <pnlSway.nudSwayRange>50</pnlSway.nudSwayRange>
-      <pnlSurge.nudSurgeOutGain>0.2</pnlSurge.nudSurgeOutGain>
+      <pnlSway.nudSwayRange>100</pnlSway.nudSwayRange>
+      <pnlSurge.nudSurgeOutGain>1</pnlSurge.nudSurgeOutGain>
       <pnlSurge.nudSurgeInGain>1</pnlSurge.nudSurgeInGain>
-      <pnlSurge.nudSurgeRange>50</pnlSurge.nudSurgeRange>
-      <pnlHeave.nudHeaveOutGain>0.2</pnlHeave.nudHeaveOutGain>
+      <pnlSurge.nudSurgeRange>100</pnlSurge.nudSurgeRange>
+      <pnlHeave.nudHeaveOutGain>1</pnlHeave.nudHeaveOutGain>
       <pnlHeave.nudHeaveInGain>1</pnlHeave.nudHeaveInGain>
-      <pnlHeave.nudHeaveRange>20</pnlHeave.nudHeaveRange>
-      <pnlYaw.nudYawOutGain>0.2</pnlYaw.nudYawOutGain>
+      <pnlHeave.nudHeaveRange>100</pnlHeave.nudHeaveRange>
+      <pnlYaw.nudYawOutGain>1</pnlYaw.nudYawOutGain>
       <pnlYaw.nudYawInGain>1</pnlYaw.nudYawInGain>
-      <pnlYaw.nudYawRange>0</pnlYaw.nudYawRange>
-      <pnlRoll.nudRollOutGain>0.2</pnlRoll.nudRollOutGain>
+      <pnlYaw.nudYawRange>20</pnlYaw.nudYawRange>
+      <pnlRoll.nudRollOutGain>1</pnlRoll.nudRollOutGain>
       <pnlRoll.nudRollInGain>1</pnlRoll.nudRollInGain>
       <pnlRoll.nudRollRange>20</pnlRoll.nudRollRange>
-      <pnlPitch.nudPitchOutGain>0.2</pnlPitch.nudPitchOutGain>
+      <pnlPitch.nudPitchOutGain>1</pnlPitch.nudPitchOutGain>
       <pnlPitch.nudPitchInGain>1</pnlPitch.nudPitchInGain>
       <pnlPitch.nudPitchRange>20</pnlPitch.nudPitchRange>
-      <pnlRoll.nudSwayInRollOutGain>0.2</pnlRoll.nudSwayInRollOutGain>
-      <pnlPitch.nudSurgeInPitchOutGain>0.2</pnlPitch.nudSurgeInPitchOutGain>
+      <pnlRoll.nudSwayInRollOutGain>1</pnlRoll.nudSwayInRollOutGain>
+      <pnlPitch.nudSurgeInPitchOutGain>1</pnlPitch.nudSurgeInPitchOutGain>
       <NUDYawCORX>0</NUDYawCORX>
       <NUDYawCORY>0</NUDYawCORY>
       <NUDRollCORX>0</NUDRollCORX>
@@ -87,20 +106,20 @@
       <NUDPitchCORY>0</NUDPitchCORY>
       <NUDPitchCORZ>0</NUDPitchCORZ>
       <pnlPitch.afcSurgeInPitchFilter.txtFilterText>0</pnlPitch.afcSurgeInPitchFilter.txtFilterText>
-      <pnlPitch.afcPitchFilter.txtFilterText>0</pnlPitch.afcPitchFilter.txtFilterText>
+      <pnlPitch.afcPitchFilter.txtFilterText>EMALP(VALUE;250)</pnlPitch.afcPitchFilter.txtFilterText>
       <pnlRoll.afcSwayInRollFilter.txtFilterText>0</pnlRoll.afcSwayInRollFilter.txtFilterText>
-      <pnlRoll.afcRollFilter.txtFilterText>0</pnlRoll.afcRollFilter.txtFilterText>
-      <pnlYaw.afcYawFilter.txtFilterText>0</pnlYaw.afcYawFilter.txtFilterText>
-      <pnlHeave.afcHeaveFilter.txtFilterText>EMALP(EMAHP(VALUE;100);100)</pnlHeave.afcHeaveFilter.txtFilterText>
-      <pnlSurge.afcSurgeFilter.txtFilterText>EMALP(EMAHP(VALUE;100);100)</pnlSurge.afcSurgeFilter.txtFilterText>
-      <pnlSway.afcSwayFilter.txtFilterText>EMALP(EMAHP(VALUE;100);100)</pnlSway.afcSwayFilter.txtFilterText>
+      <pnlRoll.afcRollFilter.txtFilterText>EMALP(VALUE;250)</pnlRoll.afcRollFilter.txtFilterText>
+      <pnlYaw.afcYawFilter.txtFilterText>EMALP(VALUE;100)</pnlYaw.afcYawFilter.txtFilterText>
+      <pnlHeave.afcHeaveFilter.txtFilterText>EMALP(VALUE;250)</pnlHeave.afcHeaveFilter.txtFilterText>
+      <pnlSurge.afcSurgeFilter.txtFilterText>EMALP(VALUE;100)</pnlSurge.afcSurgeFilter.txtFilterText>
+      <pnlSway.afcSwayFilter.txtFilterText>EMALP(VALUE;100)</pnlSway.afcSwayFilter.txtFilterText>
       <TXTUniqueName>4</TXTUniqueName>
       <TXTName>POSE :: FROM MOTION</TXTName>
       <SHPoseValues.chkShowHide>True</SHPoseValues.chkShowHide>
       <SHInputSelection.chkShowHide>True</SHInputSelection.chkShowHide>
-      <pnlPitch.chkMixSurgeInPitch>True</pnlPitch.chkMixSurgeInPitch>
+      <pnlPitch.chkMixSurgeInPitch>False</pnlPitch.chkMixSurgeInPitch>
       <pnlPitch.chkPitchManual>False</pnlPitch.chkPitchManual>
-      <pnlRoll.chkMixSwayInRoll>True</pnlRoll.chkMixSwayInRoll>
+      <pnlRoll.chkMixSwayInRoll>False</pnlRoll.chkMixSwayInRoll>
       <pnlRoll.chkRollManual>False</pnlRoll.chkRollManual>
       <pnlYaw.chkYawManual>False</pnlYaw.chkYawManual>
       <pnlHeave.chkHeaveManual>False</pnlHeave.chkHeaveManual>
@@ -114,21 +133,23 @@
       <pnlHeave.ddlHeaveValue>Vertical acceleration (m/s²)</pnlHeave.ddlHeaveValue>
       <pnlSurge.ddlSurgeValue>Longitudinal acceleration (m/s²)</pnlSurge.ddlSurgeValue>
       <pnlSway.ddlSwayValue>Lateral acceleration (m/s²)</pnlSway.ddlSwayValue>
-      <TVInputSelection />
-      <pnlPitch.hsPitchInOut>0;0</pnlPitch.hsPitchInOut>
-      <pnlRoll.hsRollInOut>0;0</pnlRoll.hsRollInOut>
-      <pnlYaw.hsYawInOut>0;0</pnlYaw.hsYawInOut>
-      <pnlHeave.hsHeaveInOut>0;0</pnlHeave.hsHeaveInOut>
-      <pnlSurge.hsSurgeInOut>0;0</pnlSurge.hsSurgeInOut>
-      <pnlSway.hsSwayInOut>0;0</pnlSway.hsSwayInOut>
+      <TVInputSelection>
+        <item>SOURCE :: NOISE</item>
+      </TVInputSelection>
+      <pnlPitch.hsPitchInOut>0;3.06320700421573E-322</pnlPitch.hsPitchInOut>
+      <pnlRoll.hsRollInOut>0;-3.06320700421573E-322</pnlRoll.hsRollInOut>
+      <pnlYaw.hsYawInOut>0;1.23516411460312E-322</pnlYaw.hsYawInOut>
+      <pnlHeave.hsHeaveInOut>3.70428667038818;-0.0371756328185343</pnlHeave.hsHeaveInOut>
+      <pnlSurge.hsSurgeInOut>-1.46930200352732;0.213905833238434</pnlSurge.hsSurgeInOut>
+      <pnlSway.hsSwayInOut>-3.06544100578471;-0.872024434770175</pnlSway.hsSwayInOut>
     </CONTROLS>
   </POSE>
   <RIG>
     <Type>Mover.Rigs.LinearHexapod</Type>
     <Name>RIG :: LINEAR HEXAPOD</Name>
-    <Location>0,160</Location>
+    <Location>380,48</Location>
     <Size>1352,608</Size>
-    <Visible>False</Visible>
+    <Visible>True</Visible>
     <CONTROLS>
       <PNLActuatorsOutput.nudDefault0>0</PNLActuatorsOutput.nudDefault0>
       <NUDSwayLimit>9999</NUDSwayLimit>
@@ -158,7 +179,7 @@
       <NUDRigL2>40</NUDRigL2>
       <NUDRigL3>230</NUDRigL3>
       <NUDRigL4>1030</NUDRigL4>
-      <NUDRange>25</NUDRange>
+      <NUDRange>170</NUDRange>
       <NUDMiddle>1100</NUDMiddle>
       <NUDSingularityAngle>10</NUDSingularityAngle>
       <NUDSpeedBits>8</NUDSpeedBits>
@@ -178,7 +199,7 @@
       <PNLActuatorsOutput.txtSpeedKey4>Speed5a</PNLActuatorsOutput.txtSpeedKey4>
       <PNLActuatorsOutput.txtKey5>Axis6a</PNLActuatorsOutput.txtKey5>
       <PNLActuatorsOutput.txtSpeedKey5>Speed6a</PNLActuatorsOutput.txtSpeedKey5>
-      <AFCActuatorsFilter.txtFilterText>VALUE</AFCActuatorsFilter.txtFilterText>
+      <AFCActuatorsFilter.txtFilterText>CROP(MUL(VALUE;0.41);-34.00;35)</AFCActuatorsFilter.txtFilterText>
       <AFCLinearDOFFilter.txtFilterText>VALUE</AFCLinearDOFFilter.txtFilterText>
       <AFCRotationDOFFilter.txtFilterText>VALUE</AFCRotationDOFFilter.txtFilterText>
       <TXTUniqueName>7</TXTUniqueName>
@@ -199,26 +220,26 @@
       <TVInputSelection>
         <item>POSE :: FROM MOTION</item>
       </TVInputSelection>
-      <PNLActuatorsOutput.slider0>0;0</PNLActuatorsOutput.slider0>
-      <PNLActuatorsOutput.slider1>0;0</PNLActuatorsOutput.slider1>
-      <PNLActuatorsOutput.slider2>0;0</PNLActuatorsOutput.slider2>
-      <PNLActuatorsOutput.slider3>0;0</PNLActuatorsOutput.slider3>
-      <PNLActuatorsOutput.slider4>0;0</PNLActuatorsOutput.slider4>
-      <PNLActuatorsOutput.slider5>0;0</PNLActuatorsOutput.slider5>
+      <PNLActuatorsOutput.slider0>-2.05259238484413;-0.841562877786092</PNLActuatorsOutput.slider0>
+      <PNLActuatorsOutput.slider1>1.88340791559954;0.772197245395813</PNLActuatorsOutput.slider1>
+      <PNLActuatorsOutput.slider2>0.454339741410128;0.186279293978152</PNLActuatorsOutput.slider2>
+      <PNLActuatorsOutput.slider3>-1.71369179969829;-0.702613637876298</PNLActuatorsOutput.slider3>
+      <PNLActuatorsOutput.slider4>1.46812601100036;0.601931664510149</PNLActuatorsOutput.slider4>
+      <PNLActuatorsOutput.slider5>-0.299842664606545;-0.122935492488683</PNLActuatorsOutput.slider5>
     </CONTROLS>
   </RIG>
   <OUTPUT>
     <Type>Mover.Outputs.Serial</Type>
     <Name>OUTPUT :: SERIAL</Name>
-    <Location>634,485</Location>
+    <Location>201,615</Location>
     <Size>870,420</Size>
-    <Visible>False</Visible>
+    <Visible>True</Visible>
     <CONTROLS>
       <NUDInterval>1</NUDInterval>
       <NUDStartTime>10</NUDStartTime>
       <NUDStopTime>0</NUDStopTime>
       <TXTStopString></TXTStopString>
-      <TXTSendString>q 0 &lt;PAxis1a&gt;&lt;13&gt;q 1 &lt;PAxis2a&gt;&lt;13&gt;</TXTSendString>
+      <TXTSendString>q 0 &lt;PAxis6a&gt;&lt;13&gt;q 1 &lt;PAxis1a&gt;&lt;13&gt;</TXTSendString>
       <TXTStartString>w axis0.requested_state 8&lt;13&gt;</TXTStartString>
       <TXTUniqueName>8</TXTUniqueName>
       <TXTInputString></TXTInputString>
@@ -231,7 +252,7 @@
       <DDLStopBits>1</DDLStopBits>
       <DDLDataBits>8</DDLDataBits>
       <DDLBaudRate>115200</DDLBaudRate>
-      <DDLPort></DDLPort>
+      <DDLPort>COM4</DDLPort>
       <DDLTypeOfOutput>Decimal</DDLTypeOfOutput>
       <TVInputSelection />
     </CONTROLS>
@@ -239,15 +260,15 @@
   <OUTPUT>
     <Type>Mover.Outputs.Serial</Type>
     <Name>OUTPUT :: SERIAL (1)</Name>
-    <Location>145,337</Location>
+    <Location>1142,614</Location>
     <Size>870,420</Size>
-    <Visible>False</Visible>
+    <Visible>True</Visible>
     <CONTROLS>
       <NUDInterval>1</NUDInterval>
       <NUDStartTime>0</NUDStartTime>
       <NUDStopTime>0</NUDStopTime>
       <TXTStopString></TXTStopString>
-      <TXTSendString>q 0 &lt;PAxis3a&gt;&lt;13&gt;q 1 &lt;PAxis4a&gt;&lt;13&gt;</TXTSendString>
+      <TXTSendString>q 0 &lt;PAxis2a&gt;&lt;13&gt;q 1 &lt;PAxis3a&gt;&lt;13&gt;</TXTSendString>
       <TXTStartString></TXTStartString>
       <TXTUniqueName>10</TXTUniqueName>
       <TXTInputString></TXTInputString>
@@ -260,7 +281,7 @@
       <DDLStopBits>1</DDLStopBits>
       <DDLDataBits>8</DDLDataBits>
       <DDLBaudRate>115200</DDLBaudRate>
-      <DDLPort></DDLPort>
+      <DDLPort>COM5</DDLPort>
       <DDLTypeOfOutput>Decimal</DDLTypeOfOutput>
       <TVInputSelection />
     </CONTROLS>
@@ -268,15 +289,15 @@
   <OUTPUT>
     <Type>Mover.Outputs.Serial</Type>
     <Name>OUTPUT :: SERIAL (2)</Name>
-    <Location>275,352</Location>
+    <Location>1142,215</Location>
     <Size>870,420</Size>
-    <Visible>False</Visible>
+    <Visible>True</Visible>
     <CONTROLS>
       <NUDInterval>1</NUDInterval>
       <NUDStartTime>0</NUDStartTime>
       <NUDStopTime>0</NUDStopTime>
       <TXTStopString></TXTStopString>
-      <TXTSendString>q 0 &lt;PAxis5a&gt;&lt;13&gt;q 1 &lt;PAxis6a&gt;&lt;13&gt;</TXTSendString>
+      <TXTSendString>q 0 &lt;PAxis4a&gt;&lt;13&gt;q 1 &lt;PAxis5a&gt;&lt;13&gt;</TXTSendString>
       <TXTStartString></TXTStartString>
       <TXTUniqueName>11</TXTUniqueName>
       <TXTInputString></TXTInputString>
@@ -289,7 +310,7 @@
       <DDLStopBits>1</DDLStopBits>
       <DDLDataBits>8</DDLDataBits>
       <DDLBaudRate>115200</DDLBaudRate>
-      <DDLPort></DDLPort>
+      <DDLPort>COM3</DDLPort>
       <DDLTypeOfOutput>Decimal</DDLTypeOfOutput>
       <TVInputSelection />
     </CONTROLS>
@@ -299,7 +320,7 @@
     <Name>OUTPUT :: SERIAL (3)</Name>
     <Location>0,583</Location>
     <Size>870,420</Size>
-    <Visible>True</Visible>
+    <Visible>False</Visible>
     <CONTROLS>
       <NUDInterval>1</NUDInterval>
       <NUDStartTime>0</NUDStartTime>
@@ -326,13 +347,13 @@
   <VIEWER_3D>
     <Type>Mover.Viewers.View3D</Type>
     <Name>3D VIEWER</Name>
-    <Location>0,603</Location>
+    <Location>1627,332</Location>
     <Size>400,400</Size>
     <Visible>False</Visible>
     <CONTROLS>
       <NUDDistance>3000</NUDDistance>
-      <NUDZRotation>117</NUDZRotation>
-      <NUDXRotation>18</NUDXRotation>
+      <NUDZRotation>123</NUDZRotation>
+      <NUDXRotation>23</NUDXRotation>
       <TXTUniqueName>9</TXTUniqueName>
       <TXTName>3D VIEWER</TXTName>
       <CHKTopMost>True</CHKTopMost>
@@ -341,33 +362,105 @@
     </CONTROLS>
   </VIEWER_3D>
   <SOURCE>
-    <Type>Mover.Sources.MMF.AssettoCorsa</Type>
-    <Name>SOURCE :: ASSETTO CORSA (MMF)</Name>
-    <Location>-2274,286</Location>
-    <Size>550,550</Size>
-    <Visible>True</Visible>
+    <Type>Mover.Sources.Calculated.Loop</Type>
+    <Name>SOURCE :: LOOP</Name>
+    <Location>588,450</Location>
+    <Size>660,550</Size>
+    <Visible>False</Visible>
     <CONTROLS>
+      <NUDAmplitude>5</NUDAmplitude>
+      <NUDPhaseShift>0</NUDPhaseShift>
+      <NUDPeriod>5000</NUDPeriod>
+      <NUDVerticalShift>0</NUDVerticalShift>
       <PNLOptions.NUDSway>0</PNLOptions.NUDSway>
       <PNLOptions.NUDSurge>0</PNLOptions.NUDSurge>
       <PNLOptions.NUDHeave>0</PNLOptions.NUDHeave>
       <PNLOptions.AFCCalculationsFilter.txtFilterText>VALUE</PNLOptions.AFCCalculationsFilter.txtFilterText>
-      <TXTUniqueName>16</TXTUniqueName>
-      <TXTName>SOURCE :: ASSETTO CORSA (MMF)</TXTName>
+      <AFCFilter.txtFilterText>VALUE</AFCFilter.txtFilterText>
+      <TXTUniqueName>18</TXTUniqueName>
+      <TXTName>SOURCE :: LOOP</TXTName>
       <SHOptions.chkShowHide>True</SHOptions.chkShowHide>
       <SHInputValues.chkShowHide>True</SHInputValues.chkShowHide>
+      <SHInputSelection.chkShowHide>True</SHInputSelection.chkShowHide>
       <CHKAutoConnect>False</CHKAutoConnect>
       <CHKTopMost>False</CHKTopMost>
+      <DDLType>Sine</DDLType>
+      <TVInputSelection>
+        <item>Roll position (º)</item>
+      </TVInputSelection>
+    </CONTROLS>
+  </SOURCE>
+  <SOURCE>
+    <Type>Mover.Sources.Calculated.Loop</Type>
+    <Name>SOURCE :: LOOP (1)</Name>
+    <Location>26,26</Location>
+    <Size>660,550</Size>
+    <Visible>False</Visible>
+    <CONTROLS>
+      <NUDAmplitude>5</NUDAmplitude>
+      <NUDPhaseShift>1250</NUDPhaseShift>
+      <NUDPeriod>5000</NUDPeriod>
+      <NUDVerticalShift>0</NUDVerticalShift>
+      <PNLOptions.NUDSway>0</PNLOptions.NUDSway>
+      <PNLOptions.NUDSurge>0</PNLOptions.NUDSurge>
+      <PNLOptions.NUDHeave>0</PNLOptions.NUDHeave>
+      <PNLOptions.AFCCalculationsFilter.txtFilterText>VALUE</PNLOptions.AFCCalculationsFilter.txtFilterText>
+      <AFCFilter.txtFilterText>VALUE</AFCFilter.txtFilterText>
+      <TXTUniqueName>20</TXTUniqueName>
+      <TXTName>SOURCE :: LOOP (1)</TXTName>
+      <SHOptions.chkShowHide>True</SHOptions.chkShowHide>
+      <SHInputValues.chkShowHide>True</SHInputValues.chkShowHide>
+      <SHInputSelection.chkShowHide>True</SHInputSelection.chkShowHide>
+      <CHKAutoConnect>False</CHKAutoConnect>
+      <CHKTopMost>False</CHKTopMost>
+      <DDLType>Sine</DDLType>
+      <TVInputSelection>
+        <item>Pitch position (º)</item>
+      </TVInputSelection>
+    </CONTROLS>
+  </SOURCE>
+  <SOURCE>
+    <Type>Mover.Sources.Calculated.Noise</Type>
+    <Name>SOURCE :: NOISE</Name>
+    <Location>52,52</Location>
+    <Size>660,550</Size>
+    <Visible>True</Visible>
+    <CONTROLS>
+      <NUDCenter>0</NUDCenter>
+      <NUDRange>5</NUDRange>
+      <NUDInterval>10</NUDInterval>
+      <PNLOptions.NUDSway>0</PNLOptions.NUDSway>
+      <PNLOptions.NUDSurge>0</PNLOptions.NUDSurge>
+      <PNLOptions.NUDHeave>0</PNLOptions.NUDHeave>
+      <PNLOptions.AFCCalculationsFilter.txtFilterText>VALUE</PNLOptions.AFCCalculationsFilter.txtFilterText>
+      <AFCFilter.txtFilterText>EMAHP(VALUE;100)</AFCFilter.txtFilterText>
+      <TXTUniqueName>22</TXTUniqueName>
+      <TXTName>SOURCE :: NOISE</TXTName>
+      <SHOptions.chkShowHide>True</SHOptions.chkShowHide>
+      <SHInputValues.chkShowHide>True</SHInputValues.chkShowHide>
+      <SHInputSelection.chkShowHide>True</SHInputSelection.chkShowHide>
+      <CHKSameNoise>False</CHKSameNoise>
+      <CHKAutoConnect>False</CHKAutoConnect>
+      <CHKTopMost>False</CHKTopMost>
+      <TVInputSelection>
+        <item>Lateral acceleration (m/s²)</item>
+        <item>Longitudinal acceleration (m/s²)</item>
+        <item>Vertical acceleration (m/s²)</item>
+      </TVInputSelection>
     </CONTROLS>
   </SOURCE>
   <Z_ORDER>
     <item>13</item>
+    <item>14</item>
+    <item>16</item>
     <item>10</item>
     <item>11</item>
-    <item>7</item>
-    <item>16</item>
-    <item>4</item>
     <item>8</item>
-    <item>14</item>
+    <item>20</item>
+    <item>18</item>
+    <item>7</item>
+    <item>4</item>
+    <item>22</item>
     <item>9</item>
   </Z_ORDER>
 </FLYPT_MOVER>
