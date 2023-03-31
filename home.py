@@ -2,16 +2,20 @@ import time
 from odrive.enums import *
 import DriveSupport
 from constants import *
-#from odrive.utils import dump_errors
+# from odrive.utils import dump_errors
 
 support = DriveSupport.ConnectToDrive()
 
 # used to quickly request states on both odrive axes
+
+
 def requestAxisStates(odrv, state):
     odrv.axis0.requested_state = state
     odrv.axis1.requested_state = state
 
 # wait until all odrives have homed and are now idle
+
+
 def waitForIdle():
     while True:
         drivesNotCalibrated = 0
@@ -24,11 +28,15 @@ def waitForIdle():
         time.sleep(0.1)
 
 # Increment the axes position
+
+
 def incAxes(odrv, inc):
     odrv.axis0.controller.input_pos += inc
     odrv.axis1.controller.input_pos += inc
 
 # Enable or disable the endstops
+
+
 def setEndstops(enabled):
     for odrv in support.drives:
         for axis in [odrv.axis0, odrv.axis1]:
@@ -37,6 +45,7 @@ def setEndstops(enabled):
 ##########################
 ##     MAIN CONTROL     ##
 ##########################
+
 
 # Disable the endstops before homing. Prevents endstop errors
 # if the endstops are already depressed from the actuators being
@@ -70,7 +79,7 @@ for odrv in support.drives:
 """
 
 #####################################################################
-## !! This can be used to move the motors by keyboard before homing !!
+# !! This can be used to move the motors by keyboard before homing !!
 """ # Comment or uncomment to disable or enable the code section
  input('Press enter to move motors by keyboard control')
 
@@ -95,20 +104,29 @@ for odrv in support.drives:
          inc += move_inc.count('+')
          inc -= move_inc.count('-')
          incAxes(support.drives[drive_cmd], inc)
-# """ # Don't bother removing this line. It allows the opening block comment line to be enabled/disabled
+# """  # Don't bother removing this line. It allows the opening block comment line to be enabled/disabled
 #####################################################################
 
 # Home all axes
-# for odrv in support.drives:
-    # requestAxisStates(odrv, AxisState.HOMING)
-# print('Homing...')
+for odrv in support.drives:
+    requestAxisStates(odrv, AxisState.HOMING)
+print('Homing...')
 
-# Wait until all motors are idle after homing
-# waitForIdle()
 
-# Re-enable closed loop control for actual simulator input
-#for odrv in support.drives:
-#    requestAxisStates(odrv, AxisState.CLOSED_LOOP_CONTROL)
-#print('Axes at 0')
+finished_homing = 0
+# Re-enable closed loop control when each axis is done homing
+while True:
+    for odrv in support.drives:
+        for axis in [odrv.axis0, odrv.axis1]:
+            if axis.current_state == AxisState.IDLE:
+                axis.requested_state = AxisState.CLOSED_LOOP_CONTROL
+                axis.controller.input_pos = 0
+                finished_homing += 1  # Increment the finished homing counter
+
+    if finished_homing == 6:
+        break
+    time.sleep(0.1)
+
+print('Axes at 0')
 
 print('Done')

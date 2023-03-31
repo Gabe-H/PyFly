@@ -1,7 +1,15 @@
 {
+    "placeholder_serial_numbers":
+    [
+        "367838843131",
+        "366F386A3131",
+        "3688386B3131"
+    ],
     "serial_numbers":
     [
-        "367838843131"
+        "367838843131",
+        "366F386A3131",
+        "3688386B3131"
     ],
     "motor_config": {
         "pos_gain": 96,
@@ -25,12 +33,14 @@
         "min_endstop_axis0": {
             "enabled": true,
             "gpio_num": 8,
-            "is_active_high": true
+            "is_active_high": true,
+            "offset": 35
         },
         "min_endstop_axis1": {
             "enabled": true,
             "gpio_num": 7,
-            "is_active_high": true
+            "is_active_high": true,
+            "offset": 35
         }
     }
 }

@@ -25,15 +25,17 @@ class ConnectToDrive():
         drive.config.brake_resistance = config['brake_resistance']
         drive.config.dc_max_negative_current = config['dc_max_negative_current']
 
-        drive.axis0.config.min_endstop.config.gpio_num = config['min_endstop_axis0']['gpio_num']
-        drive.axis0.config.min_endstop.config.is_active_high = config[
+        drive.axis0.min_endstop.config.gpio_num = config['min_endstop_axis0']['gpio_num']
+        drive.axis0.min_endstop.config.is_active_high = config[
             'min_endstop_axis0']['is_active_high']
-        drive.axis0.config.min_endstop.config.enabled = config['min_endstop_axis0']['enabled']
+        drive.axis0.min_endstop.config.enabled = config['min_endstop_axis0']['enabled']
+        drive.axis0.min_endstop.config.offset = config['min_endstop_axis0']['offset']
 
-        drive.axis1.config.min_endstop.config.gpio_num = config['min_endstop_axis1']['gpio_num']
-        drive.axis1.config.min_endstop.config.is_active_high = config[
+        drive.axis1.min_endstop.config.gpio_num = config['min_endstop_axis1']['gpio_num']
+        drive.axis1.min_endstop.config.is_active_high = config[
             'min_endstop_axis1']['is_active_high']
-        drive.axis1.config.min_endstop.config.enabled = config['min_endstop_axis1']['enabled']
+        drive.axis1.min_endstop.config.enabled = config['min_endstop_axis1']['enabled']
+        drive.axis1.min_endstop.config.offset = config['min_endstop_axis1']['offset']
 
         gpio_modes = [drive.config.gpio1_mode, drive.config.gpio2_mode, drive.config.gpio3_mode,
                       drive.config.gpio4_mode, drive.config.gpio5_mode, drive.config.gpio6_mode, drive.config.gpio7_mode, drive.config.gpio8_mode]
@@ -110,7 +112,7 @@ class ConnectToDrive():
             self.CalibrateAxis(drive.axis0)
             self.CalibrateAxis(drive.axis1)
 
-        # Wait for all axes to be idle after homing
+        # Wait for all axes to be idle after calibrating
         while True:
             drivesNotCalibrated = 0
             for drive in self.drives:
