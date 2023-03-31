@@ -1,6 +1,8 @@
 import odrive
 from odrive.enums import *
-import json, time
+import json
+import time
+
 
 class ConnectToDrive():
     # Establish connection to ODrives based on serial number(s)
@@ -8,12 +10,13 @@ class ConnectToDrive():
         with open('config.json') as f:
             self.serialNumbers = json.load(f)['serial_numbers']
 
-        self.drives = [] # Init array of drives
+        self.drives = []  # Init array of drives
         for i in range(len(self.serialNumbers)):
             print('Searching for ODrive...')
-            self.drives.append(self.DetermineParameters(odrive.find_any(serial_number=self.serialNumbers[i])))
+            self.drives.append(self.DetermineParameters(
+                odrive.find_any(serial_number=self.serialNumbers[i])))
             print(f'({i + 1}/{len(self.serialNumbers)}) ODrives Connected...')
-        
+
         print(f'\n{len(self.drives)} connected\n')
 
     # Set parameters to a given odrive
@@ -22,8 +25,23 @@ class ConnectToDrive():
         drive.config.brake_resistance = config['brake_resistance']
         drive.config.dc_max_negative_current = config['dc_max_negative_current']
 
-        drive.axis0.max_endstop.config.gpio_num = config['axis0_endstop_gpio']
-        drive.axis1.max_endstop.config.gpio_num = config['axis1_endstop_gpio']
+        drive.axis0.config.min_endstop.config.gpio_num = config['min_endstop_axis0']['gpio_num']
+        drive.axis0.config.min_endstop.config.is_active_high = config[
+            'min_endstop_axis0']['is_active_high']
+        drive.axis0.config.min_endstop.config.enabled = config['min_endstop_axis0']['enabled']
+
+        drive.axis1.config.min_endstop.config.gpio_num = config['min_endstop_axis1']['gpio_num']
+        drive.axis1.config.min_endstop.config.is_active_high = config[
+            'min_endstop_axis1']['is_active_high']
+        drive.axis1.config.min_endstop.config.enabled = config['min_endstop_axis1']['enabled']
+
+        gpio_modes = [drive.config.gpio1_mode, drive.config.gpio2_mode, drive.config.gpio3_mode,
+                      drive.config.gpio4_mode, drive.config.gpio5_mode, drive.config.gpio6_mode, drive.config.gpio7_mode, drive.config.gpio8_mode]
+
+        gpio_modes[config['min_endstop_axis0']
+                   ['gpio_num'] - 1] = GpioMode.DIGITAL_PULL_UP
+        gpio_modes[config['min_endstop_axis1']
+                   ['gpio_num'] - 1] = GpioMode.DIGITAL_PULL_UP
 
         print(f'ODrive settings set.')
 
@@ -31,7 +49,7 @@ class ConnectToDrive():
     def SetAxisParam(self, axis, config):
         # Set to POS_FILTER so that we can use the 'input_filter_bandwidth' option later
         axis.controller.config.input_mode = InputMode.POS_FILTER
-        
+
         # The rest of the settings are controlled from the configuration file
         axis.controller.config.pos_gain = config['pos_gain']
         axis.controller.config.vel_gain = config['vel_gain']
@@ -62,14 +80,14 @@ class ConnectToDrive():
         drive.clear_errors()
 
         return drive
-    
+
     # Can be used to make calibration quicker; do not calibrate anything that's already been calibrated
     def DetermineAxisState(self, motor_ready, enc_ready):
         if motor_ready and enc_ready:
             return AxisState.IDLE
-        if motor_ready and not(enc_ready):
+        if motor_ready and not (enc_ready):
             return AxisState.ENCODER_OFFSET_CALIBRATION
-        if not(motor_ready) and enc_ready:
+        if not (motor_ready) and enc_ready:
             return AxisState.MOTOR_CALIBRATION
         return AxisState.FULL_CALIBRATION_SEQUENCE
 
@@ -79,7 +97,8 @@ class ConnectToDrive():
         if (force_full_calibration):
             axis.requested_state = AxisState.FULL_CALIBRATION_SEQUENCE
         else:
-            axis.requested_state = self.DetermineAxisState(axis.motor.is_calibrated, axis.encoder.is_ready)
+            axis.requested_state = self.DetermineAxisState(
+                axis.motor.is_calibrated, axis.encoder.is_ready)
 
     # Start the library. Calibrate motors, then configure the control mode
     # Returns a tuple of the calibrated drives.
@@ -90,7 +109,7 @@ class ConnectToDrive():
             print(f'Calibrating ({i+1}/{len(self.drives)})')
             self.CalibrateAxis(drive.axis0)
             self.CalibrateAxis(drive.axis1)
-        
+
         # Wait for all axes to be idle after homing
         while True:
             drivesNotCalibrated = 0
@@ -103,7 +122,7 @@ class ConnectToDrive():
 
         # Let the boards settle for a second
         time.sleep(1)
-            
+
         for drive in self.drives:
             # Set the controller to use the encoder for closed loop feedback
             drive.axis0.requested_state = AxisState.CLOSED_LOOP_CONTROL
@@ -123,5 +142,5 @@ class ConnectToDrive():
         for drive in drives:
             drive.axis0.requested_state = AxisState.IDLE
             drive.axis1.requested_state = AxisState.IDLE
-        
+
         print('Drives idle')
