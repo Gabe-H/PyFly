@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FLYPT_MOVER Version="3.5.3">
   <MAIN>
-    <Location>692,301</Location>
+    <Location>816,65</Location>
   </MAIN>
   <SHARE>
     <ShareUser></ShareUser>
@@ -72,12 +72,100 @@
       <CHKTopMost>False</CHKTopMost>
     </CONTROLS>
   </SOURCE>
+  <SOURCE>
+    <Type>Mover.Sources.Calculated.Loop</Type>
+    <Name>SOURCE :: LOOP</Name>
+    <Location>588,314</Location>
+    <Size>660,550</Size>
+    <Visible>False</Visible>
+    <CONTROLS>
+      <NUDAmplitude>5</NUDAmplitude>
+      <NUDPhaseShift>0</NUDPhaseShift>
+      <NUDPeriod>5000</NUDPeriod>
+      <NUDVerticalShift>0</NUDVerticalShift>
+      <PNLOptions.NUDSway>0</PNLOptions.NUDSway>
+      <PNLOptions.NUDSurge>0</PNLOptions.NUDSurge>
+      <PNLOptions.NUDHeave>0</PNLOptions.NUDHeave>
+      <PNLOptions.AFCCalculationsFilter.txtFilterText>VALUE</PNLOptions.AFCCalculationsFilter.txtFilterText>
+      <AFCFilter.txtFilterText>VALUE</AFCFilter.txtFilterText>
+      <TXTUniqueName>18</TXTUniqueName>
+      <TXTName>SOURCE :: LOOP</TXTName>
+      <SHOptions.chkShowHide>True</SHOptions.chkShowHide>
+      <SHInputValues.chkShowHide>True</SHInputValues.chkShowHide>
+      <SHInputSelection.chkShowHide>True</SHInputSelection.chkShowHide>
+      <CHKAutoConnect>False</CHKAutoConnect>
+      <CHKTopMost>False</CHKTopMost>
+      <DDLType>Triangle</DDLType>
+      <TVInputSelection>
+        <item>Yaw position (º)</item>
+      </TVInputSelection>
+    </CONTROLS>
+  </SOURCE>
+  <SOURCE>
+    <Type>Mover.Sources.Calculated.Loop</Type>
+    <Name>SOURCE :: LOOP (1)</Name>
+    <Location>26,26</Location>
+    <Size>660,550</Size>
+    <Visible>False</Visible>
+    <CONTROLS>
+      <NUDAmplitude>5</NUDAmplitude>
+      <NUDPhaseShift>1250</NUDPhaseShift>
+      <NUDPeriod>5000</NUDPeriod>
+      <NUDVerticalShift>0</NUDVerticalShift>
+      <PNLOptions.NUDSway>0</PNLOptions.NUDSway>
+      <PNLOptions.NUDSurge>0</PNLOptions.NUDSurge>
+      <PNLOptions.NUDHeave>0</PNLOptions.NUDHeave>
+      <PNLOptions.AFCCalculationsFilter.txtFilterText>VALUE</PNLOptions.AFCCalculationsFilter.txtFilterText>
+      <AFCFilter.txtFilterText>VALUE</AFCFilter.txtFilterText>
+      <TXTUniqueName>20</TXTUniqueName>
+      <TXTName>SOURCE :: LOOP (1)</TXTName>
+      <SHOptions.chkShowHide>True</SHOptions.chkShowHide>
+      <SHInputValues.chkShowHide>True</SHInputValues.chkShowHide>
+      <SHInputSelection.chkShowHide>True</SHInputSelection.chkShowHide>
+      <CHKAutoConnect>False</CHKAutoConnect>
+      <CHKTopMost>False</CHKTopMost>
+      <DDLType>Sine</DDLType>
+      <TVInputSelection>
+        <item>Pitch position (º)</item>
+      </TVInputSelection>
+    </CONTROLS>
+  </SOURCE>
+  <SOURCE>
+    <Type>Mover.Sources.Calculated.Noise</Type>
+    <Name>SOURCE :: NOISE</Name>
+    <Location>52,52</Location>
+    <Size>660,550</Size>
+    <Visible>False</Visible>
+    <CONTROLS>
+      <NUDCenter>0</NUDCenter>
+      <NUDRange>10</NUDRange>
+      <NUDInterval>10</NUDInterval>
+      <PNLOptions.NUDSway>0</PNLOptions.NUDSway>
+      <PNLOptions.NUDSurge>0</PNLOptions.NUDSurge>
+      <PNLOptions.NUDHeave>0</PNLOptions.NUDHeave>
+      <PNLOptions.AFCCalculationsFilter.txtFilterText>VALUE</PNLOptions.AFCCalculationsFilter.txtFilterText>
+      <AFCFilter.txtFilterText>EMAHP(VALUE;100)</AFCFilter.txtFilterText>
+      <TXTUniqueName>22</TXTUniqueName>
+      <TXTName>SOURCE :: NOISE</TXTName>
+      <SHOptions.chkShowHide>True</SHOptions.chkShowHide>
+      <SHInputValues.chkShowHide>True</SHInputValues.chkShowHide>
+      <SHInputSelection.chkShowHide>True</SHInputSelection.chkShowHide>
+      <CHKSameNoise>False</CHKSameNoise>
+      <CHKAutoConnect>False</CHKAutoConnect>
+      <CHKTopMost>False</CHKTopMost>
+      <TVInputSelection>
+        <item>Lateral acceleration (m/s²)</item>
+        <item>Longitudinal acceleration (m/s²)</item>
+        <item>Vertical acceleration (m/s²)</item>
+      </TVInputSelection>
+    </CONTROLS>
+  </SOURCE>
   <POSE>
     <Type>Mover.Poses.AdvancedPoseFromMotion</Type>
     <Name>POSE :: FROM MOTION</Name>
-    <Location>205,609</Location>
+    <Location>95,146</Location>
     <Size>1344,500</Size>
-    <Visible>True</Visible>
+    <Visible>False</Visible>
     <CONTROLS>
       <pnlSway.nudSwayOutGain>1</pnlSway.nudSwayOutGain>
       <pnlSway.nudSwayInGain>1</pnlSway.nudSwayInGain>
@@ -106,13 +194,13 @@
       <NUDPitchCORY>0</NUDPitchCORY>
       <NUDPitchCORZ>0</NUDPitchCORZ>
       <pnlPitch.afcSurgeInPitchFilter.txtFilterText>0</pnlPitch.afcSurgeInPitchFilter.txtFilterText>
-      <pnlPitch.afcPitchFilter.txtFilterText>EMALP(VALUE;250)</pnlPitch.afcPitchFilter.txtFilterText>
+      <pnlPitch.afcPitchFilter.txtFilterText>EMALP(VALUE;300)</pnlPitch.afcPitchFilter.txtFilterText>
       <pnlRoll.afcSwayInRollFilter.txtFilterText>0</pnlRoll.afcSwayInRollFilter.txtFilterText>
-      <pnlRoll.afcRollFilter.txtFilterText>EMALP(VALUE;250)</pnlRoll.afcRollFilter.txtFilterText>
-      <pnlYaw.afcYawFilter.txtFilterText>EMALP(VALUE;100)</pnlYaw.afcYawFilter.txtFilterText>
+      <pnlRoll.afcRollFilter.txtFilterText>EMALP(VALUE;300)</pnlRoll.afcRollFilter.txtFilterText>
+      <pnlYaw.afcYawFilter.txtFilterText>EMALP(VALUE;300)</pnlYaw.afcYawFilter.txtFilterText>
       <pnlHeave.afcHeaveFilter.txtFilterText>EMALP(VALUE;250)</pnlHeave.afcHeaveFilter.txtFilterText>
-      <pnlSurge.afcSurgeFilter.txtFilterText>EMALP(VALUE;100)</pnlSurge.afcSurgeFilter.txtFilterText>
-      <pnlSway.afcSwayFilter.txtFilterText>EMALP(VALUE;100)</pnlSway.afcSwayFilter.txtFilterText>
+      <pnlSurge.afcSurgeFilter.txtFilterText>EMALP(VALUE;300)</pnlSurge.afcSurgeFilter.txtFilterText>
+      <pnlSway.afcSwayFilter.txtFilterText>EMALP(VALUE;300)</pnlSway.afcSwayFilter.txtFilterText>
       <TXTUniqueName>4</TXTUniqueName>
       <TXTName>POSE :: FROM MOTION</TXTName>
       <SHPoseValues.chkShowHide>True</SHPoseValues.chkShowHide>
@@ -134,22 +222,24 @@
       <pnlSurge.ddlSurgeValue>Longitudinal acceleration (m/s²)</pnlSurge.ddlSurgeValue>
       <pnlSway.ddlSwayValue>Lateral acceleration (m/s²)</pnlSway.ddlSwayValue>
       <TVInputSelection>
+        <item>SOURCE :: LOOP</item>
+        <item>SOURCE :: LOOP (1)</item>
         <item>SOURCE :: NOISE</item>
       </TVInputSelection>
-      <pnlPitch.hsPitchInOut>0;3.06320700421573E-322</pnlPitch.hsPitchInOut>
-      <pnlRoll.hsRollInOut>0;-3.06320700421573E-322</pnlRoll.hsRollInOut>
-      <pnlYaw.hsYawInOut>0;1.23516411460312E-322</pnlYaw.hsYawInOut>
-      <pnlHeave.hsHeaveInOut>3.70428667038818;-0.0371756328185343</pnlHeave.hsHeaveInOut>
-      <pnlSurge.hsSurgeInOut>-1.46930200352732;0.213905833238434</pnlSurge.hsSurgeInOut>
-      <pnlSway.hsSwayInOut>-3.06544100578471;-0.872024434770175</pnlSway.hsSwayInOut>
+      <pnlPitch.hsPitchInOut>0;-3.70549234380935E-322</pnlPitch.hsPitchInOut>
+      <pnlRoll.hsRollInOut>0;-3.70549234380935E-322</pnlRoll.hsRollInOut>
+      <pnlYaw.hsYawInOut>0;8.67799264868523E-29</pnlYaw.hsYawInOut>
+      <pnlHeave.hsHeaveInOut>-0.779892154461389;-0.0401217794968266</pnlHeave.hsHeaveInOut>
+      <pnlSurge.hsSurgeInOut>-3.2170841878977;0.0203895285579784</pnlSurge.hsSurgeInOut>
+      <pnlSway.hsSwayInOut>-2.37636556002642;-0.11267866590032</pnlSway.hsSwayInOut>
     </CONTROLS>
   </POSE>
   <RIG>
     <Type>Mover.Rigs.LinearHexapod</Type>
     <Name>RIG :: LINEAR HEXAPOD</Name>
-    <Location>380,48</Location>
+    <Location>184,48</Location>
     <Size>1352,608</Size>
-    <Visible>True</Visible>
+    <Visible>False</Visible>
     <CONTROLS>
       <PNLActuatorsOutput.nudDefault0>0</PNLActuatorsOutput.nudDefault0>
       <NUDSwayLimit>9999</NUDSwayLimit>
@@ -220,20 +310,20 @@
       <TVInputSelection>
         <item>POSE :: FROM MOTION</item>
       </TVInputSelection>
-      <PNLActuatorsOutput.slider0>-2.05259238484413;-0.841562877786092</PNLActuatorsOutput.slider0>
-      <PNLActuatorsOutput.slider1>1.88340791559954;0.772197245395813</PNLActuatorsOutput.slider1>
-      <PNLActuatorsOutput.slider2>0.454339741410128;0.186279293978152</PNLActuatorsOutput.slider2>
-      <PNLActuatorsOutput.slider3>-1.71369179969829;-0.702613637876298</PNLActuatorsOutput.slider3>
-      <PNLActuatorsOutput.slider4>1.46812601100036;0.601931664510149</PNLActuatorsOutput.slider4>
-      <PNLActuatorsOutput.slider5>-0.299842664606545;-0.122935492488683</PNLActuatorsOutput.slider5>
+      <PNLActuatorsOutput.slider0>1.21779896983165;0.499297577630975</PNLActuatorsOutput.slider0>
+      <PNLActuatorsOutput.slider1>1.09360874214551;0.448379584279658</PNLActuatorsOutput.slider1>
+      <PNLActuatorsOutput.slider2>1.58325559803362;0.649134795193785</PNLActuatorsOutput.slider2>
+      <PNLActuatorsOutput.slider3>1.10173177892434;0.451710029358979</PNLActuatorsOutput.slider3>
+      <PNLActuatorsOutput.slider4>1.00133679001213;0.410548083904975</PNLActuatorsOutput.slider4>
+      <PNLActuatorsOutput.slider5>1.60705083701085;0.65889084317445</PNLActuatorsOutput.slider5>
     </CONTROLS>
   </RIG>
   <OUTPUT>
     <Type>Mover.Outputs.Serial</Type>
     <Name>OUTPUT :: SERIAL</Name>
-    <Location>201,615</Location>
+    <Location>201,444</Location>
     <Size>870,420</Size>
-    <Visible>True</Visible>
+    <Visible>False</Visible>
     <CONTROLS>
       <NUDInterval>1</NUDInterval>
       <NUDStartTime>10</NUDStartTime>
@@ -252,7 +342,7 @@
       <DDLStopBits>1</DDLStopBits>
       <DDLDataBits>8</DDLDataBits>
       <DDLBaudRate>115200</DDLBaudRate>
-      <DDLPort>COM4</DDLPort>
+      <DDLPort>COM8</DDLPort>
       <DDLTypeOfOutput>Decimal</DDLTypeOfOutput>
       <TVInputSelection />
     </CONTROLS>
@@ -260,7 +350,7 @@
   <OUTPUT>
     <Type>Mover.Outputs.Serial</Type>
     <Name>OUTPUT :: SERIAL (1)</Name>
-    <Location>1142,614</Location>
+    <Location>666,444</Location>
     <Size>870,420</Size>
     <Visible>True</Visible>
     <CONTROLS>
@@ -289,7 +379,7 @@
   <OUTPUT>
     <Type>Mover.Outputs.Serial</Type>
     <Name>OUTPUT :: SERIAL (2)</Name>
-    <Location>1142,215</Location>
+    <Location>666,215</Location>
     <Size>870,420</Size>
     <Visible>True</Visible>
     <CONTROLS>
@@ -310,7 +400,7 @@
       <DDLStopBits>1</DDLStopBits>
       <DDLDataBits>8</DDLDataBits>
       <DDLBaudRate>115200</DDLBaudRate>
-      <DDLPort>COM3</DDLPort>
+      <DDLPort>COM9</DDLPort>
       <DDLTypeOfOutput>Decimal</DDLTypeOfOutput>
       <TVInputSelection />
     </CONTROLS>
@@ -318,7 +408,7 @@
   <OUTPUT>
     <Type>Mover.Outputs.Serial</Type>
     <Name>OUTPUT :: SERIAL (3)</Name>
-    <Location>0,583</Location>
+    <Location>0,444</Location>
     <Size>870,420</Size>
     <Visible>False</Visible>
     <CONTROLS>
@@ -347,7 +437,7 @@
   <VIEWER_3D>
     <Type>Mover.Viewers.View3D</Type>
     <Name>3D VIEWER</Name>
-    <Location>1627,332</Location>
+    <Location>1136,332</Location>
     <Size>400,400</Size>
     <Visible>False</Visible>
     <CONTROLS>
@@ -361,106 +451,18 @@
       <ddlRigs>RIG :: LINEAR HEXAPOD</ddlRigs>
     </CONTROLS>
   </VIEWER_3D>
-  <SOURCE>
-    <Type>Mover.Sources.Calculated.Loop</Type>
-    <Name>SOURCE :: LOOP</Name>
-    <Location>588,450</Location>
-    <Size>660,550</Size>
-    <Visible>False</Visible>
-    <CONTROLS>
-      <NUDAmplitude>5</NUDAmplitude>
-      <NUDPhaseShift>0</NUDPhaseShift>
-      <NUDPeriod>5000</NUDPeriod>
-      <NUDVerticalShift>0</NUDVerticalShift>
-      <PNLOptions.NUDSway>0</PNLOptions.NUDSway>
-      <PNLOptions.NUDSurge>0</PNLOptions.NUDSurge>
-      <PNLOptions.NUDHeave>0</PNLOptions.NUDHeave>
-      <PNLOptions.AFCCalculationsFilter.txtFilterText>VALUE</PNLOptions.AFCCalculationsFilter.txtFilterText>
-      <AFCFilter.txtFilterText>VALUE</AFCFilter.txtFilterText>
-      <TXTUniqueName>18</TXTUniqueName>
-      <TXTName>SOURCE :: LOOP</TXTName>
-      <SHOptions.chkShowHide>True</SHOptions.chkShowHide>
-      <SHInputValues.chkShowHide>True</SHInputValues.chkShowHide>
-      <SHInputSelection.chkShowHide>True</SHInputSelection.chkShowHide>
-      <CHKAutoConnect>False</CHKAutoConnect>
-      <CHKTopMost>False</CHKTopMost>
-      <DDLType>Sine</DDLType>
-      <TVInputSelection>
-        <item>Roll position (º)</item>
-      </TVInputSelection>
-    </CONTROLS>
-  </SOURCE>
-  <SOURCE>
-    <Type>Mover.Sources.Calculated.Loop</Type>
-    <Name>SOURCE :: LOOP (1)</Name>
-    <Location>26,26</Location>
-    <Size>660,550</Size>
-    <Visible>False</Visible>
-    <CONTROLS>
-      <NUDAmplitude>5</NUDAmplitude>
-      <NUDPhaseShift>1250</NUDPhaseShift>
-      <NUDPeriod>5000</NUDPeriod>
-      <NUDVerticalShift>0</NUDVerticalShift>
-      <PNLOptions.NUDSway>0</PNLOptions.NUDSway>
-      <PNLOptions.NUDSurge>0</PNLOptions.NUDSurge>
-      <PNLOptions.NUDHeave>0</PNLOptions.NUDHeave>
-      <PNLOptions.AFCCalculationsFilter.txtFilterText>VALUE</PNLOptions.AFCCalculationsFilter.txtFilterText>
-      <AFCFilter.txtFilterText>VALUE</AFCFilter.txtFilterText>
-      <TXTUniqueName>20</TXTUniqueName>
-      <TXTName>SOURCE :: LOOP (1)</TXTName>
-      <SHOptions.chkShowHide>True</SHOptions.chkShowHide>
-      <SHInputValues.chkShowHide>True</SHInputValues.chkShowHide>
-      <SHInputSelection.chkShowHide>True</SHInputSelection.chkShowHide>
-      <CHKAutoConnect>False</CHKAutoConnect>
-      <CHKTopMost>False</CHKTopMost>
-      <DDLType>Sine</DDLType>
-      <TVInputSelection>
-        <item>Pitch position (º)</item>
-      </TVInputSelection>
-    </CONTROLS>
-  </SOURCE>
-  <SOURCE>
-    <Type>Mover.Sources.Calculated.Noise</Type>
-    <Name>SOURCE :: NOISE</Name>
-    <Location>52,52</Location>
-    <Size>660,550</Size>
-    <Visible>True</Visible>
-    <CONTROLS>
-      <NUDCenter>0</NUDCenter>
-      <NUDRange>5</NUDRange>
-      <NUDInterval>10</NUDInterval>
-      <PNLOptions.NUDSway>0</PNLOptions.NUDSway>
-      <PNLOptions.NUDSurge>0</PNLOptions.NUDSurge>
-      <PNLOptions.NUDHeave>0</PNLOptions.NUDHeave>
-      <PNLOptions.AFCCalculationsFilter.txtFilterText>VALUE</PNLOptions.AFCCalculationsFilter.txtFilterText>
-      <AFCFilter.txtFilterText>EMAHP(VALUE;100)</AFCFilter.txtFilterText>
-      <TXTUniqueName>22</TXTUniqueName>
-      <TXTName>SOURCE :: NOISE</TXTName>
-      <SHOptions.chkShowHide>True</SHOptions.chkShowHide>
-      <SHInputValues.chkShowHide>True</SHInputValues.chkShowHide>
-      <SHInputSelection.chkShowHide>True</SHInputSelection.chkShowHide>
-      <CHKSameNoise>False</CHKSameNoise>
-      <CHKAutoConnect>False</CHKAutoConnect>
-      <CHKTopMost>False</CHKTopMost>
-      <TVInputSelection>
-        <item>Lateral acceleration (m/s²)</item>
-        <item>Longitudinal acceleration (m/s²)</item>
-        <item>Vertical acceleration (m/s²)</item>
-      </TVInputSelection>
-    </CONTROLS>
-  </SOURCE>
   <Z_ORDER>
     <item>13</item>
     <item>14</item>
     <item>16</item>
-    <item>10</item>
-    <item>11</item>
-    <item>8</item>
     <item>20</item>
-    <item>18</item>
-    <item>7</item>
+    <item>11</item>
+    <item>10</item>
     <item>4</item>
+    <item>7</item>
     <item>22</item>
+    <item>18</item>
+    <item>8</item>
     <item>9</item>
   </Z_ORDER>
 </FLYPT_MOVER>
