@@ -135,10 +135,16 @@ class ConnectToDrive():
                 return
 
             axis.encoder.config.pre_calibrated = True
-            axis.config.startup_encoder_index_search = True
 
             print(
                 f'Encoder index calibration complete (offset: {axis.encoder.config.offset})')
+
+    def EnableAutomaticStartup(self, drive):
+        for axis in [drive.axis0, drive.axis1]:
+            axis.config.startup_motor_calibration = True
+            axis.config.startup_encoder_index_search = True
+            axis.config.startup_homing = True
+            axis.config.startup_closed_loop_control = True
 
     def waitForIdle(self, axis):
         while axis.current_state != AxisState.IDLE:
