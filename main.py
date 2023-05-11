@@ -15,19 +15,13 @@ support.ConfigureBoards(drives)
 ############################
 
 # Run one-time motor calibration. Saves values to board
-support.MotorCalibration(drives[0])
-support.MotorCalibration(drives[1])
-support.MotorCalibration(drives[2])
+support.MotorCalibration([d for d in drives])
 
 # Run one-time encoder calibration. Saves values to board
-support.EncoderIndexCalibration(drives[0])
-support.EncoderIndexCalibration(drives[1])
-support.EncoderIndexCalibration(drives[2])
+support.EncoderIndexCalibration([d for d in drives])
 
 # Enable automatic motor, encoder, homing, and closed loop control on startup
-support.EnableAutomaticStartup(drives[0])
-support.EnableAutomaticStartup(drives[1])
-support.EnableAutomaticStartup(drives[2])
+support.EnableAutomaticStartup([d for d in drives])
 
 print('------------------------------------------')
 print("-                                        -")
