@@ -195,13 +195,13 @@
     <CONTROLS>
       <pnlSway.nudSwayOutGain>1</pnlSway.nudSwayOutGain>
       <pnlSway.nudSwayInGain>1</pnlSway.nudSwayInGain>
-      <pnlSway.nudSwayRange>150</pnlSway.nudSwayRange>
+      <pnlSway.nudSwayRange>100</pnlSway.nudSwayRange>
       <pnlSurge.nudSurgeOutGain>1</pnlSurge.nudSurgeOutGain>
       <pnlSurge.nudSurgeInGain>1</pnlSurge.nudSurgeInGain>
-      <pnlSurge.nudSurgeRange>150</pnlSurge.nudSurgeRange>
+      <pnlSurge.nudSurgeRange>100</pnlSurge.nudSurgeRange>
       <pnlHeave.nudHeaveOutGain>1</pnlHeave.nudHeaveOutGain>
       <pnlHeave.nudHeaveInGain>1</pnlHeave.nudHeaveInGain>
-      <pnlHeave.nudHeaveRange>150</pnlHeave.nudHeaveRange>
+      <pnlHeave.nudHeaveRange>100</pnlHeave.nudHeaveRange>
       <pnlYaw.nudYawOutGain>1</pnlYaw.nudYawOutGain>
       <pnlYaw.nudYawInGain>1</pnlYaw.nudYawInGain>
       <pnlYaw.nudYawRange>10</pnlYaw.nudYawRange>
@@ -255,12 +255,12 @@
         <item>ASSETTO CORSA (MMF)</item>
         <item>FORZA HORIZON 4 (UDP)</item>
       </TVInputSelection>
-      <pnlPitch.hsPitchInOut>0;1.23516411460312E-322</pnlPitch.hsPitchInOut>
-      <pnlRoll.hsRollInOut>0;-1.23516411460312E-322</pnlRoll.hsRollInOut>
-      <pnlYaw.hsYawInOut>0;0</pnlYaw.hsYawInOut>
-      <pnlHeave.hsHeaveInOut>0;-2.47032822920623E-322</pnlHeave.hsHeaveInOut>
-      <pnlSurge.hsSurgeInOut>0;2.47032822920623E-322</pnlSurge.hsSurgeInOut>
-      <pnlSway.hsSwayInOut>0;-2.47032822920623E-322</pnlSway.hsSwayInOut>
+      <pnlPitch.hsPitchInOut>0;0</pnlPitch.hsPitchInOut>
+      <pnlRoll.hsRollInOut>0;5.54072324330507E-191</pnlRoll.hsRollInOut>
+      <pnlYaw.hsYawInOut>0;8.31418640069874E-266</pnlYaw.hsYawInOut>
+      <pnlHeave.hsHeaveInOut>0;-2.92915322497982E-235</pnlHeave.hsHeaveInOut>
+      <pnlSurge.hsSurgeInOut>0;0</pnlSurge.hsSurgeInOut>
+      <pnlSway.hsSwayInOut>0;1.47418390284257E-189</pnlSway.hsSwayInOut>
     </CONTROLS>
   </POSE>
   <RIG>
@@ -359,7 +359,7 @@
       <NUDStopTime>0</NUDStopTime>
       <TXTStopString></TXTStopString>
       <TXTSendString>q 0 &lt;PAxis6a&gt;&lt;13&gt;q 1 &lt;PAxis1a&gt;&lt;13&gt;</TXTSendString>
-      <TXTStartString>w axis0.requested_state 8&lt;13&gt;</TXTStartString>
+      <TXTStartString></TXTStartString>
       <TXTUniqueName>8</TXTUniqueName>
       <TXTInputString></TXTInputString>
       <TXTName>Front (6/1)</TXTName>
@@ -472,17 +472,17 @@
   </VIEWER_GRAPHIC>
   <Z_ORDER>
     <item>24</item>
-    <item>7</item>
-    <item>9</item>
     <item>20</item>
-    <item>22</item>
+    <item>25</item>
+    <item>9</item>
     <item>18</item>
+    <item>22</item>
     <item>13</item>
     <item>16</item>
-    <item>25</item>
     <item>4</item>
-    <item>10</item>
     <item>8</item>
     <item>11</item>
+    <item>7</item>
+    <item>10</item>
   </Z_ORDER>
 </FLYPT_MOVER>
