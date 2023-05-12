@@ -17,14 +17,13 @@ class ConnectToDrive():
             drives.append(
                 odrive.find_any(serial_number=self.serialNumbers[i])
             )
-            print(f'({i + 1}/{len(self.serialNumbers)}) ODrives Connected...')
-
-        print(f'\n{len(drives)} connected\n')
+            print(
+                f'ODrive #{self.boardNumber(drives[i].serial_number)} ({drives[i].serial_number}) connected.')
 
         return drives
 
     # Set parameters to a given odrive
-    def SetODriveParam(self, drive, config):
+    def SetODriveParams(self, drive, config):
         # Brake resistor
         drive.config.enable_brake_resistor = config['enable_brake_resistor']
         drive.config.brake_resistance = config['brake_resistance']
@@ -52,26 +51,31 @@ class ConnectToDrive():
         gpio_modes[config['min_endstop_axis1']
                    ['gpio_num'] - 1] = GpioMode.DIGITAL_PULL_UP
 
-        print(f'\tODrive settings set.')
+        print(
+            f'\tODrive #{self.boardNumber(drive.serial_number)} parameters set.')
 
-    # Set parameters to a given axis
-    def SetAxisParam(self, axis, config):
+    # Set parameters to both axes of a drive
+    def SetAxesParams(self, drive, config):
         # Set to POS_FILTER so that we can use the 'input_filter_bandwidth' option later
-        axis.controller.config.input_mode = InputMode.POS_FILTER
+        axes = [drive.axis0, drive.axis1]
+        for i in range(2):
+            axis = axes[i]  # Get axis
 
-        # Axis controller and motor configuration
-        axis.controller.config.pos_gain = config['pos_gain']
-        axis.controller.config.vel_gain = config['vel_gain']
-        axis.controller.config.vel_integrator_gain = config['vel_integrator_gain']
-        axis.controller.config.vel_limit = config['vel_limit']
-        axis.controller.config.input_filter_bandwidth = config['input_filter_bandwidth']
-        axis.motor.config.current_lim = config['current_lim']
-        axis.motor.config.pole_pairs = config['pole_pairs']
-        axis.motor.config.torque_constant = 8.27 / config['motor_kv']
-        axis.motor.config.motor_type = config['motor_type']
-        axis.encoder.config.cpr = config['encoder_cpr']
+            axis.controller.config.input_mode = InputMode.POS_FILTER
 
-        print(f'\tAxis settings set.')
+            # Axis controller and motor configuration
+            axis.controller.config.pos_gain = config['pos_gain']
+            axis.controller.config.vel_gain = config['vel_gain']
+            axis.controller.config.vel_integrator_gain = config['vel_integrator_gain']
+            axis.controller.config.vel_limit = config['vel_limit']
+            axis.controller.config.input_filter_bandwidth = config['input_filter_bandwidth']
+            axis.motor.config.current_lim = config['current_lim']
+            axis.motor.config.pole_pairs = config['pole_pairs']
+            axis.motor.config.torque_constant = 8.27 / config['motor_kv']
+            axis.motor.config.motor_type = config['motor_type']
+            axis.encoder.config.cpr = config['encoder_cpr']
+            print(
+                f'\tODrive #{self.boardNumber(drive.serial_number)} Axis{i} parameters set.')
 
     # Open config file and apply settings to the axes of the specified ODrive
     def ConfigureBoards(self, drives):
@@ -79,45 +83,49 @@ class ConnectToDrive():
             data = json.load(f)
 
             for drive in drives:
-                print(f'Configuring ODrive {drive.serial_number}...')
-                self.SetODriveParam(drive, data['odrive_config'])
-                self.SetAxisParam(drive.axis0, data['motor_config'])
-                self.SetAxisParam(drive.axis1, data['motor_config'])
+                print(
+                    f'Configuring ODrive #{self.boardNumber(drive.serial_number)}...')
+                self.SetODriveParams(drive, data['odrive_config'])
+                self.SetAxesParams(drive, data['motor_config'])
 
-        # Clear any existing errors to start in a stable state
-        # Changing certain settings (such as enabling the brake resistor) will leave the ODrive in an errored state until
-        # we either reboot the entire ODrive (which I would like to do but haven't been able to do without crashing the
-        # entire Python script) or call drive.clear_errors(). This *will* clear any legitimate errors too but hopefully
-        # any actual errors will just reappear as soon as we try to move the motors.
-        drive.clear_errors()
-
-        return drive
+                # Clear any existing errors to start in a stable state
+                # Changing certain settings (such as enabling the brake resistor) will leave the ODrive in an errored state until
+                # we either reboot the entire ODrive (which I would like to do but haven't been able to do without crashing the
+                # entire Python script) or call drive.clear_errors(). This *will* clear any legitimate errors too but hopefully
+                # any actual errors will just reappear as soon as we try to move the motors.
+                drive.clear_errors()
 
     def MotorCalibration(self, drive):
-        for axis in [drive.axis0, drive.axis1]:
+        axes = [drive.axis0, drive.axis1]
+        for i in range(2):
+            axis = axes[i]  # Get axis
+
             axis.requested_state = AxisState.MOTOR_CALIBRATION
 
             self.waitForIdle(axis)
 
             if (axis.error != 0):
                 print(
-                    f'Error {axis.error} occurred during motor calibration')
+                    f'ERROR (AxisError.{AxisError(axis.error).name}) occurred during motor calibration (ODrive #{self.boardNumber(drive.serial_number)} Axis{i}))')
                 return
 
             axis.motor.config.pre_calibrated = True
 
             print(
-                f'Motor calibration complete (resistance: {axis.motor.config.phase_resistance} | inductance: {axis.motor.config.phase_inductance})')
+                f'Motor calibration complete (ODrive #{self.boardNumber(drive.serial_number)} Axis{i})')
 
-    # Function to be called once *ever* to configure the encoder and index offsets
-
+    # Function to be called once "ever" to configure the encoder and index offsets
     def EncoderIndexCalibration(self, drive):
-        for axis in [drive.axis0, drive.axis1]:
+        axes = [drive.axis0, drive.axis1]
+        for i in range(2):
+            axis = axes[i]  # Get axis
+
             axis.encoder.config.use_index = True
 
-            axis.config.calibration_lockin.vel = 1
-            axis.config.calibration_lockin.accel = 0
-            axis.config.calibration_lockin.ramp_distance = 0.5
+            # Custom ramping/velocity control during calibration
+            # axis.config.calibration_lockin.vel = 1
+            # axis.config.calibration_lockin.accel = 0
+            # axis.config.calibration_lockin.ramp_distance = 0.5
 
             axis.requested_state = AxisState.ENCODER_INDEX_SEARCH
             self.waitForIdle(axis)
@@ -127,25 +135,35 @@ class ConnectToDrive():
 
             if (axis.error != 0):
                 print(
-                    f'Error {axis.error} occurred during encoder calibration')
+                    f'ERROR (AxisError.{AxisError(axis.error).name}) occurred during encoder calibration (ODrive #{self.boardNumber(drive.serial_number)} Axis{i}))')
                 return
 
             if (abs(axis.encoder.config.direction) != 1):  # Should be 1 or -1
-                print(f'Encoder direction not set correctly')
+                print(
+                    f'Encoder direction not set correctly (ODrive #{self.boardNumber(drive.serial_number)} Axis{i}))')
                 return
 
             axis.encoder.config.pre_calibrated = True
 
             print(
-                f'Encoder index calibration complete (offset: {axis.encoder.config.offset})')
+                f'Encoder index calibration complete (ODrive #{self.boardNumber(drive.serial_number)} Axis{i})')
 
-    def EnableAutomaticStartup(self, drive):
-        for axis in [drive.axis0, drive.axis1]:
-            axis.config.startup_motor_calibration = True
-            axis.config.startup_encoder_index_search = True
-            axis.config.startup_homing = True
-            axis.config.startup_closed_loop_control = True
+    def EnableAutomaticStartup(self, drive, state=True):
+        axes = [drive.axis0, drive.axis1]
+        for i in range(2):
+            axis = axes[i]  # Get axis
+
+            axis.config.startup_motor_calibration = state
+            axis.config.startup_encoder_index_search = state
+            axis.config.startup_homing = state
+            axis.config.startup_closed_loop_control = state
+
+            print(
+                f'ODrive #{self.boardNumber(drive.serial_number)} Axis{i} automatic startup: {"Enabled" if state else "Disabled"}')
 
     def waitForIdle(self, axis):
         while axis.current_state != AxisState.IDLE:
             time.sleep(0.1)
+
+    def boardNumber(self, serialNumber):
+        return self.serialNumbers.index(serialNumber) + 1
