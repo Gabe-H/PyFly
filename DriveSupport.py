@@ -153,7 +153,6 @@ class ConnectToDrive():
         for i in range(2):
             axis = axes[i]  # Get axis
 
-            axis.config.startup_motor_calibration = state
             axis.config.startup_encoder_index_search = state
             axis.config.startup_homing = state
             axis.config.startup_closed_loop_control = state
