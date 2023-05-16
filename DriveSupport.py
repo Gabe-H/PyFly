@@ -160,6 +160,9 @@ class ConnectToDrive():
             print(
                 f'ODrive #{self.boardNumber(drive.serial_number)} Axis{i} automatic startup: {"Enabled" if state else "Disabled"}')
 
+    def SetPosition(self, axis, position):
+        axis.controller.input_pos = position
+
     def waitForIdle(self, axis):
         while axis.current_state != AxisState.IDLE:
             time.sleep(0.1)

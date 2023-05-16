@@ -26,6 +26,9 @@ for d in drives:
     support.EnableAutomaticStartup(d)
     # support.EnableAutomaticStartup([d for d in drives], state=False)
 
+    support.setPosition(d.axis0, 0)
+    support.setPosition(d.axis1, 0)
+
 print('------------------------------------------')
 print("-                                        -")
 print("- !! MUST MANUALLY SAVE ODRIVE CONFIG !! -")
