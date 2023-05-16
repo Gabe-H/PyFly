@@ -165,5 +165,4 @@ class ConnectToDrive():
             time.sleep(0.1)
 
     def boardNumber(self, serialNumber):
-        return 1
-        return self.serialNumbers.index(serialNumber) + 1
+        return self.serialNumbers.index(hex(serialNumber)[2:].upper()) + 1
