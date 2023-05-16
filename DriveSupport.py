@@ -164,6 +164,8 @@ class ConnectToDrive():
         axis.controller.input_pos = position
 
     def waitForIdle(self, axis):
+        while axis.current_state == AxisState.IDLE:
+            time.sleep(0.1)
         while axis.current_state != AxisState.IDLE:
             time.sleep(0.1)
 
