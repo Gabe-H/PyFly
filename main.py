@@ -26,8 +26,8 @@ for d in drives:
     support.EnableAutomaticStartup(d)
     # support.EnableAutomaticStartup([d for d in drives], state=False)
 
-    support.SetPosition(d.axis0, 0)
-    support.SetPosition(d.axis1, 0)
+    #support.SetPosition(d.axis0, 0)
+    #support.SetPosition(d.axis1, 0)
 
 print('------------------------------------------')
 print("-                                        -")
